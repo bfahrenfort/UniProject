@@ -1,4 +1,5 @@
 ﻿using System;
+using UniProject.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,7 @@ namespace UniProject
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new TestPage();
         }
 
         protected override void OnStart()
