@@ -12,9 +12,6 @@ namespace UniProject.Views
     {
         public TestPage()
         {
-            //SchoolsList.ItemsSource = new SchoolViewModel().Schools;
-            //var vm = new SchoolViewModel();
-            //BindingContext = vm;
             InitializeComponent();
         }
     }

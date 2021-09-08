@@ -12,7 +12,7 @@ namespace UniProject
         {
             InitializeComponent();
 
-            MainPage = new TestPage();
+            MainPage = new TestPage(); // Set the main page being displayed as our test page
         }
 
         protected override void OnStart()
