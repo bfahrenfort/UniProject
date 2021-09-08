@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UniProject.ViewModels;
 using Xamarin.Forms;
 
 namespace UniProject.Views
@@ -11,6 +12,9 @@ namespace UniProject.Views
     {
         public TestPage()
         {
+            //SchoolsList.ItemsSource = new SchoolViewModel().Schools;
+            //var vm = new SchoolViewModel();
+            //BindingContext = vm;
             InitializeComponent();
         }
     }
