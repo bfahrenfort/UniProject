@@ -16,6 +16,9 @@ namespace UniProject.Views
             //var vm = new SchoolViewModel();
             //BindingContext = vm;
             InitializeComponent();
+            
+            //BuildingList.ItemSource = new BuildingViewModel().Buildings;
+            //LocationsInBuildingsList.Itemsource = new LocationsinBuildingViewModel().LocationsInBuildings;
         }
     }
 }

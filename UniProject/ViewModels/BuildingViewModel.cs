@@ -1,5 +1,9 @@
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using UniProject.Models;
+
+//View Model Displaying list of different buildings on campus
 
 namespace UniProject.ViewModels
 {
@@ -11,8 +15,21 @@ namespace UniProject.ViewModels
         {
             Buildings = new ObservableCollection<Building>
             {
-                new Building { buildingName = "" ,buildingLocation = ""},
-                new Building { buildingName = "" ,buildingLocation = ""}
+                new Building { BuildingName = "" ,BuildingAddress = ""},
+                new Building { BuildingName = "" ,BuildingAddress = ""},
+                new Building { BuildingName = "" ,BuildingAddress = ""},
+                new Building { BuildingName = "" ,BuildingAddress = ""},
+                new Building { BuildingName = "" ,BuildingAddress = ""},
+                new Building { BuildingName = "" ,BuildingAddress = ""},
+                new Building { BuildingName = "" ,BuildingAddress = ""},
+                new Building { BuildingName = "" ,BuildingAddress = ""},
+                new Building { BuildingName = "" ,BuildingAddress = ""},
+                new Building { BuildingName = "" ,BuildingAddress = ""},
+                new Building { BuildingName = "" ,BuildingAddress = ""},
+                new Building { BuildingName = "" ,BuildingAddress = ""},
+                new Building { BuildingName = "" ,BuildingAddress = ""},
+                new Building { BuildingName = "" ,BuildingAddress = ""},
+                new Building { BuildingName = "" ,BuildingAddress = ""},
             };
             
         }

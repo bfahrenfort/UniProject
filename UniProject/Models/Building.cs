@@ -2,15 +2,16 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
+//features needed for Building
 namespace UniProject.Models
 {
     public class Building
     {
         private string buildingName;
-        public string buildingName { get; set; }
+        public string BuildingName { get; set; }
 
-        private string buildingLocation;
-        public string buildingLocation { get; set; }
+        private string buildingAddress;
+        public string BuildingAddress { get; set; }
     }
 
 }

@@ -18,5 +18,6 @@
         <DependentUpon>TestPage.xaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
+      <Compile Remove="ViewModels\LocationInBuildingViewModel.cs" />
     </ItemGroup>
 </Project>
