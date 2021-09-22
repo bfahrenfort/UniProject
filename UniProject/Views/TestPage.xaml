@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:UniProject.ViewModels;assembly=UniProject"
+             xmlns:models="clr-namespace:UniProject.Models;assembly=UniProject"
+             x:Class="UniProject.Views.TestPage" >
+    
+    <!-- This context tells the layout that it will be working with a SchoolViewModel.
+        It can be moved into higher or lower scopes as desired, 
+        for instance if you wish to have a ListView bound to a SchoolViewModel but also require another binding
+        context somewhere else-->
+    <ContentPage.BindingContext>
+        <viewModels:SchoolViewModel></viewModels:SchoolViewModel>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <!-- Default label -->
+        <Label Text="Welcome to Xamarin.Forms!" 
+           HorizontalOptions="Center"
+           VerticalOptions="StartAndExpand" />
+        <!-- ListView, bound to the Schools list from the SchoolViewModel from the binding context-->
+        <ListView x:Name="SchoolsList"
+                  ItemsSource="{Binding Schools}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <!-- TextCell to determine what will show up on each list entry.
+                        Bound to the Name property of each school in the list.-->
+                    <TextCell Text="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
