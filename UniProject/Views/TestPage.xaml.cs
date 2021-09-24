@@ -13,9 +13,6 @@ namespace UniProject.Views
         public TestPage()
         {
             InitializeComponent();
-            
-            //BuildingList.ItemSource = new BuildingViewModel().Buildings;
-            //LocationsInBuildingsList.Itemsource = new LocationsinBuildingViewModel().LocationsInBuildings;
         }
     }
 }

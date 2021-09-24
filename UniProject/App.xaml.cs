@@ -10,7 +10,6 @@ namespace UniProject
     {
         public App()
         {
-            const string connString = "server=SERVERNAME;user=USERNAME;database=DBNAME;port=3306;password=PASSWORD";
             InitializeComponent();
 
             MainPage = new TestPage(); // Set the main page being displayed as our test page

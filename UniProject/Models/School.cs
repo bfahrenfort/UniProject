@@ -20,7 +20,16 @@ namespace UniProject.Models
 
         public School()
         {
-            // TODO: Add constructor
+            name = "";
+            acronym = "";
+            tuition = 0.0;
+        }
+
+        public School(string n, string a, double t)
+        {
+            name = n;
+            acronym = a;
+            tuition = t;
         }
     }
 }

@@ -1,37 +1,29 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using MySql.Data.MySqlClient;
+using MySql.Data;
 using UniProject.Models;
+using UniProject.Utils;
 
 //View Model Displaying list of different buildings on campus
-
 namespace UniProject.ViewModels
 {
     public class BuildingViewModel
     {
+        
         public ObservableCollection<Building> Buildings { get; }
 
+        // Default constructor
         public BuildingViewModel()
         {
-            Buildings = new ObservableCollection<Building>
-            {
-                new Building { BuildingName = "" ,BuildingAddress = ""},
-                new Building { BuildingName = "" ,BuildingAddress = ""},
-                new Building { BuildingName = "" ,BuildingAddress = ""},
-                new Building { BuildingName = "" ,BuildingAddress = ""},
-                new Building { BuildingName = "" ,BuildingAddress = ""},
-                new Building { BuildingName = "" ,BuildingAddress = ""},
-                new Building { BuildingName = "" ,BuildingAddress = ""},
-                new Building { BuildingName = "" ,BuildingAddress = ""},
-                new Building { BuildingName = "" ,BuildingAddress = ""},
-                new Building { BuildingName = "" ,BuildingAddress = ""},
-                new Building { BuildingName = "" ,BuildingAddress = ""},
-                new Building { BuildingName = "" ,BuildingAddress = ""},
-                new Building { BuildingName = "" ,BuildingAddress = ""},
-                new Building { BuildingName = "" ,BuildingAddress = ""},
-                new Building { BuildingName = "" ,BuildingAddress = ""},
-            };
-            
+            Buildings = new ObservableCollection<Building>();
+        }
+        
+        // When page is instantiated from a school
+        public BuildingViewModel(string uniName)
+        {
+            Buildings = new ObservableCollection<Building>();
         }
     }
 }

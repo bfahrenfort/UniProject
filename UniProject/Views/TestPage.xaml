@@ -10,7 +10,7 @@
         for instance if you wish to have a ListView bound to a SchoolViewModel but also require another binding
         context somewhere else-->
     <ContentPage.BindingContext>
-        <viewModels:SchoolViewModel></viewModels:SchoolViewModel>
+        <viewModels:SchoolViewModel ></viewModels:SchoolViewModel>
     </ContentPage.BindingContext>
 
     <StackLayout>
@@ -19,6 +19,9 @@
            HorizontalOptions="Center"
            VerticalOptions="StartAndExpand" />
         <!-- ListView, bound to the Schools list from the SchoolViewModel from the binding context-->
+        <SearchBar x:Name="SearchBar"
+            SearchCommand="{Binding Search}"
+            SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"/>
         <ListView x:Name="SchoolsList"
                   ItemsSource="{Binding Schools}">
             <ListView.ItemTemplate>
