@@ -10,7 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="MySql.Data" Version="8.0.26" />
+        <PackageReference Include="MySqlConnector" Version="1.4.0-beta.3" />
         <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     </ItemGroup>
 
@@ -20,5 +20,9 @@
         <SubType>Code</SubType>
       </Compile>
       <Compile Remove="ViewModels\LocationInBuildingViewModel.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Services" />
     </ItemGroup>
 </Project>

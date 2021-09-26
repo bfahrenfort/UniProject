@@ -1,8 +1,6 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using MySql.Data.MySqlClient;
-using MySql.Data;
 using UniProject.Models;
 using UniProject.Utils;
 

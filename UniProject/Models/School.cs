@@ -9,27 +9,24 @@ namespace UniProject.Models
     public class School
     {
         // Some sample fields, subject to change as database spec is created
-        private string name;
-        public string Name { get; set; }
+        private string _schoolName;
+        public string SchoolName { get; set; }
 
-        private string acronym;
-        public string Acronym { get; set; }
+        private string _schoolAddress;
+        public string SchoolAddress { get; set; }
 
-        private double tuition;
-        public double Tuition { get; set; }
+        private string _applicationURL;
+        public string ApplicationURL { get; set; }
+        
+        private string _schoolAcronym;
+        public string SchoolAcronym { get; set; }
 
-        public School()
+        public School(string n, string a, string u, string c)
         {
-            name = "";
-            acronym = "";
-            tuition = 0.0;
-        }
-
-        public School(string n, string a, double t)
-        {
-            name = n;
-            acronym = a;
-            tuition = t;
+            _schoolName = n;
+            _schoolAddress = a;
+            _applicationURL = u;
+            _schoolAcronym = c;
         }
     }
 }
