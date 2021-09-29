@@ -52,8 +52,6 @@ namespace UniProject.ViewModels
                 cmd.Connection = dbConn;
                 result = cmd.ExecuteReader();
 
-                Console.WriteLine("Beginning Results");
-                
                 // Populate the list
                 while (result.Read())
                 {
@@ -61,9 +59,6 @@ namespace UniProject.ViewModels
                                                result.GetString(1),
                                                result.GetString(2),
                                                result.GetString(3));
-                    Console.Write(result.GetString(0));
-                    
-                    //TODO: This correctly updates the ListView and adds a new element, but the school name is not shown! wth??
                     Schools.Add(school);
                 }
             }

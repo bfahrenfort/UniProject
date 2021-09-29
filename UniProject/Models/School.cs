@@ -8,25 +8,22 @@ namespace UniProject.Models
 {
     public class School
     {
-        // Some sample fields, subject to change as database spec is created
-        private string _schoolName;
+        // Some sample Properties, subject to change as database spec is created
         public string SchoolName { get; set; }
 
-        private string _schoolAddress;
         public string SchoolAddress { get; set; }
 
-        private string _applicationURL;
         public string ApplicationURL { get; set; }
-        
-        private string _schoolAcronym;
+
         public string SchoolAcronym { get; set; }
 
+        // Kirby: Credit to Josh for fixing our binding issue due to auto-property tomfoolery and my incomplete knowledge of C#
         public School(string n, string a, string u, string c)
         {
             SchoolName = n;
-            _schoolAddress = a;
-            _applicationURL = u;
-            _schoolAcronym = c;
+            SchoolAddress = a;
+            ApplicationURL = u;
+            SchoolAcronym = c;
         }
     }
 }
