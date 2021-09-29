@@ -23,7 +23,7 @@ namespace UniProject.Models
 
         public School(string n, string a, string u, string c)
         {
-            _schoolName = n;
+            SchoolName = n;
             _schoolAddress = a;
             _applicationURL = u;
             _schoolAcronym = c;
