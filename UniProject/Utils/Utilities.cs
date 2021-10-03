@@ -1,7 +1,4 @@
-﻿using System.Data.Common;
-using System.Threading.Tasks;
-
-namespace UniProject.Utils
+﻿namespace UniProject.Utils
 {
     public class Utilities
     {
