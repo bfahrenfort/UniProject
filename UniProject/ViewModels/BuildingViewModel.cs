@@ -29,9 +29,7 @@ namespace UniProject.ViewModels
         {
                 //needs to display uni name at top
                 //queries to display schooladdress, application url, followed by all buildings at school
-            DataTable testaddress = DbConn.query("select SchoolAddress from School where SchoolName like uniName"); //dont think a table is needed
-            DataTable testUrl = DbConn.query(("select ApplicationURL from School where SchoolName like uniname")); //dont think a table is needed
-            DataTable test2 = DbConn.query("select * from building where SchoolName like uniName"); //not tested
+            DataTable test2 = DbConn.query("select * from School where SchoolName = @1", uniName); //not tested
             Buildings = new ObservableCollection<Building>(test2.Select().ToList().Select(r =>
                 new Building(r["BuildingName"] as string,
                     r["BuildingAddress"] as string,
