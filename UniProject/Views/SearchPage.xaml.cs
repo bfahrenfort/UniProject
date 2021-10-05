@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace UniProject.Views
 {
-    public partial class TestPage : ContentPage
+    public partial class SearchPage : ContentPage
     {
-        public TestPage()
+        public SearchPage()
         {
             InitializeComponent();
         }
