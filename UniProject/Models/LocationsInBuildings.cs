@@ -8,18 +8,20 @@ namespace UniProject.Models
 {
     public class LocationsInBuildings
     {
-        private string buildingN;
+        public string LocationCol { get; set; } //primary key in database, not sure if needed here
         public string BuildingN { get; set; }
-
-        private string buildingAdd;
-        public string BuildingAdd { get; set; }
-
-        private string locOfInterest;
+        public string  BuildingAdd { get; set; }
         public string LocOfInterest { get; set; }
-        
-        private string roomLoc;
         public string RoomLoc { get; set; }
-        
+
+        public LocationsInBuildings(string c, string n, string a, string h, string r)
+        {
+            LocationCol = c;//primary key in database
+            BuildingN = n;
+            BuildingAdd = a;
+            LocOfInterest = h;
+            RoomLoc = r;
+        }
         
     }
 }

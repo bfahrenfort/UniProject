@@ -7,11 +7,17 @@ namespace UniProject.Models
 {
     public class Building
     {
-        private string buildingName;
         public string BuildingName { get; set; }
-
-        private string buildingAddress;
         public string BuildingAddress { get; set; }
-    }
+        public string PictureUrl { get; set; }
+        public string SchoolN { get; set; }
 
+        public Building(string n, string a, string u, string s)
+        {
+            BuildingName = n;
+            BuildingAddress = a;
+            PictureUrl = u;
+            SchoolN = s;
+        }
+    }
 }

@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using UniProject.Models;
+using UniProject.Utils;
 
 //View model displaying list of different features within each building
 
@@ -15,10 +16,7 @@ namespace UniProject.ViewModels
         {
             LocationsInBuildings = new ObservableCollection<LocationsInBuildings>
             {
-                new LocationsInBuildings() { BuildingN = "" ,BuildingAdd = "" ,LocOfInterest = "" ,RoomLoc = ""},
-                new LocationsInBuildings() { BuildingN = "" ,BuildingAdd = "" ,LocOfInterest = "" ,RoomLoc = ""},
-                new LocationsInBuildings() { BuildingN = "" ,BuildingAdd = "" ,LocOfInterest = "" ,RoomLoc = ""},
-                new LocationsInBuildings() { BuildingN = "" ,BuildingAdd = "" ,LocOfInterest = "" ,RoomLoc = ""},
+
             };
             
         }
