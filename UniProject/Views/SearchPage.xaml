@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:UniProject.ViewModels;assembly=UniProject"
-             x:Class="UniProject.Views.TestPage" >
+             x:Class="UniProject.Views.SearchPage" >
     
     <!-- This context tells the layout that it will be working with a SchoolViewModel.
         It can be moved into higher or lower scopes as desired, 
