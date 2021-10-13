@@ -24,7 +24,8 @@
         <ListView x:Name="SchoolsList"
                   ItemsSource="{Binding Schools}"
                   SelectionMode="Single"
-                  ItemSelected="SchoolClicked">
+                  ItemSelected="SchoolClicked"
+                  SelectedItem="{Binding Selected}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <!-- TextCell to determine what will show up on each list entry.

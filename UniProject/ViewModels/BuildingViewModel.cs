@@ -15,7 +15,7 @@ namespace UniProject.ViewModels
 {
     public class BuildingViewModel: INotifyPropertyChanged
     {
-
+        private School school;
         private ObservableCollection<Building> _buildings;
         
         public ObservableCollection<Building> Buildings
@@ -29,11 +29,11 @@ namespace UniProject.ViewModels
         }
         
         // Default constructor
-        public BuildingViewModel()
+        public BuildingViewModel(School s)
         {
             Buildings = new ObservableCollection<Building>();
             //THIS JUNK IS FOR TESTING ONLY{
-            DataTable test2 = DbConn.query("select * from building"); //not tested
+            DataTable test2 = DbConn.query("select * from building where SchoolName = @1", s.SchoolName); //not tested
             Buildings = new ObservableCollection<Building>(test2.Select().ToList().Select(r =>
                 new Building(r["BuildingName"] as string,
                     r["BuildingAddress"] as string,

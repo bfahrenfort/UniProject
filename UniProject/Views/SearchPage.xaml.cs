@@ -12,14 +12,16 @@ namespace UniProject.Views
 {
     public partial class SearchPage : ContentPage
     {
+        public School Selected { get; set; }
         public SearchPage()
         {
             InitializeComponent();
         }
-
+        
         async void SchoolClicked(object sender, EventArgs e)
         {
-           await Navigation.PushAsync(new BuildingPage(),true);
+            School s = (((ListView) sender).BindingContext as SchoolViewModel).Selected;
+            await Navigation.PushAsync(new BuildingPage(s),true);
         }
 
         public void SchoolSaved(object sender, EventArgs e)
