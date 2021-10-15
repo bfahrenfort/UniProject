@@ -8,18 +8,21 @@
         for instance if you wish to have a ListView bound to a BuildingViewModel but also require another binding
         context somewhere else-->
 
+
     <StackLayout>
         <!-- Using a Building View model -->
         <!--needs to be dynamic based on which selected school -->
-        <Label Text="SchoolName"
+        <Label Text="Buildings"
                HorizontalOptions="Center"
                VerticalOptions="StartAndExpand" />
+        
         
         <!-- ListView, bound to the Schools list from the SchoolViewModel from the binding context-->
         <ListView x:Name="BuildingList"
                   ItemsSource="{Binding Buildings}"
                   SelectionMode="Single"
-                  ItemSelected="BuildingClicked">
+                  ItemSelected="BuildingClicked"
+                  SelectedItem="{Binding Selected}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <!-- TextCell to determine what will show up on each list entry.

@@ -25,7 +25,8 @@ namespace UniProject.Views
         
         async void BuildingClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LocationPage(),true);
+            Building b = (((ListView) sender).BindingContext as BuildingViewModel).Selected;
+            await Navigation.PushAsync(new LocationPage(b),true);
         }
     }
 }

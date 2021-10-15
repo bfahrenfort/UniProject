@@ -15,6 +15,8 @@ namespace UniProject.ViewModels
 {
     public class BuildingViewModel: INotifyPropertyChanged
     {
+        
+        public Building Selected { get; set; }
         private School school;
         private ObservableCollection<Building> _buildings;
         
@@ -27,36 +29,26 @@ namespace UniProject.ViewModels
                 OnPropertyChanged(nameof(Buildings));
             } 
         }
+
+       /*THIS DEFAULT CONSTRUCTOR BREAKS THE PROGRAM
+        public BuildingViewModel()
+        {
+            Buildings = new ObservableCollection<Building>();
+        }*/
         
         // Default constructor
         public BuildingViewModel(School s)
         {
             Buildings = new ObservableCollection<Building>();
-            //THIS JUNK IS FOR TESTING ONLY{
-            DataTable test2 = DbConn.query("select * from building where SchoolName = @1", s.SchoolName); //not tested
+            //returns from database buildings from selected school
+            DataTable test2 = DbConn.query("select * from building where SchoolName = @1", s.SchoolName); 
             Buildings = new ObservableCollection<Building>(test2.Select().ToList().Select(r =>
                 new Building(r["BuildingName"] as string,
                     r["BuildingAddress"] as string,
                     r["PictureUrl"] as string,
                     r["SchoolName"] as string)));
-            //END TESTING JUNK^ }
+
         }
-        
-        //!!!!!!!
-        //THIS NEEDS FIXED TO ONLY QUERY FOR THE NEEDED BUILDING!
-        
-        /* public BuildingViewModel()
-         {
- 
-                 //queries to display schooladdress, application url, followed by all buildings at school
-                 DataTable test2 = DbConn.query("select * from building"); //not tested
-             Buildings = new ObservableCollection<Building>(test2.Select().ToList().Select(r =>
-                 new Building(r["BuildingName"] as string,
-                     r["BuildingAddress"] as string,
-                     r["PictureUrl"] as string,
-                     r["SchoolName"] as string)));
- 
-         }*/
         public event PropertyChangedEventHandler PropertyChanged;
         
         [NotifyPropertyChangedInvocator]

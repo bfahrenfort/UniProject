@@ -7,9 +7,7 @@
         It can be moved into higher or lower scopes as desired, 
         for instance if you wish to have a ListView bound to a LocationsInBuildingViewModel but also require another binding
         context somewhere else-->
-    <ContentPage.BindingContext>
-        <viewModels:LocationsInBuildingViewModel ></viewModels:LocationsInBuildingViewModel>
-    </ContentPage.BindingContext>
+
 
     <StackLayout>
         <!-- Using a Location View model -->
