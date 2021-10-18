@@ -13,20 +13,28 @@ namespace UniProject.Views
     public partial class SearchPage : ContentPage
     {
         public School Selected { get; set; }
+
         public SearchPage()
         {
             InitializeComponent();
         }
-        
+
         async void SchoolClicked(object sender, EventArgs e)
         {
             School s = (((ListView) sender).BindingContext as SchoolViewModel).Selected;
-            await Navigation.PushAsync(new BuildingPage(s),true);
+            await Navigation.PushAsync(new BuildingPage(s), true);
         }
 
-        public void SchoolSaved(object sender, EventArgs e)
+        private async void NavigateToSavedSearchButton(object sender, EventArgs e)
         {
-            //query user id, save school name into the user saved database
+            await Navigation.PushAsync(new SavedSearchesPage());
         }
+
     }
 }
+/**
+public void SchoolSaved(object sender, EventArgs e)
+{
+    //query user id, save school name into the user saved database
+}
+**/
