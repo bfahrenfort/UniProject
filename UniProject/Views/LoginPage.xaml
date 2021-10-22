@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UniProject.Views.LoginPage">
+    <ContentPage.Content>
+        <StackLayout Padding="40" 
+                     VerticalOptions="Center" 
+                     HorizontalOptions="FillAndExpand">
+            
+            <Entry x:Name="TextUsername"
+                   Placeholder="Username"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"/>
+            
+            <Entry x:Name="TextPassword"
+                   Placeholder="Password"
+                   IsPassword="True"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"/>
+            
+            <Button VerticalOptions="Center"
+                    Text="Login"
+                    TextColor="Black"
+                    BorderWidth="1.5"
+                    CornerRadius="50"
+                    Clicked="LoginButtonClicked"/>
+            
+            <!-- Modify to make the text ("Forgot Password") also a button -->
+            <Label Text="Forgot Password" 
+                   TextColor="Gray"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center">
+                
+                <!-- Modify to make the text (Forgot Password) also a button -->
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ForgotPasswordButtonTapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+            
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Don't have an account? "
+                              TextColor="Gray"/>
+                        
+                        <Span Text="Register Here" 
+                              TextColor="Gray"
+                              FontAttributes="Bold"
+                              TextDecorations="Underline"/>
+                    </FormattedString>
+                </Label.FormattedText>
+                <!-- Modify to make the text (Register) also a button -->
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="RegisterButtonTapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

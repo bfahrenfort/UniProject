@@ -15,6 +15,7 @@ namespace UniProject.ViewModels
 {
     public class SchoolViewModel : INotifyPropertyChanged
     {
+        public School Selected { get; set; }
         private const string TextSearchQuery = "select * from School where SchoolName like @1";
 
         //FIXME we don't really need an explicit backing field since we need to onpropertychanged it

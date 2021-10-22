@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UniProject.Views.RegistrationPage">
+    <ContentPage.Content>
+        <StackLayout Padding="40" 
+                     VerticalOptions="Center" 
+                     HorizontalOptions="FillAndExpand">
+            
+            <Entry x:Name="NewUsername"
+                   Placeholder="Username"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"/>
+            
+            <Entry x:Name="NewEmail"
+                   Placeholder="Email"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"/>
+            
+            <Entry x:Name="NewPassword"
+                   Placeholder="Password"
+                   IsPassword="True"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"/>
+            
+            <Entry x:Name="NewPasswordConfirm"
+                   Placeholder="Reenter Password"
+                   IsPassword="True"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"/>
+            
+            <Button VerticalOptions="Center"
+                    Text="Create Account"
+                    TextColor="Black"
+                    BorderWidth="1.5"
+                    CornerRadius="50"
+                    Clicked="CreateAccountButtonClicked"/>
+  
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Already have an account? "
+                              TextColor="Gray"/>
+                        
+                        <Span Text="Login Here" 
+                              TextColor="Gray"
+                              FontAttributes="Bold"
+                              TextDecorations="Underline"/>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ExistingAccountButtonTapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
