@@ -16,11 +16,11 @@ namespace UniProject.ViewModels
     public class BuildingViewModel: INotifyPropertyChanged
     {
         
-        public Building Selected { get; set; }
-        private School school;
-        private ObservableCollection<Building> _buildings;
+        public BuildingModel Selected { get; set; }
+        private SchoolModel school;
+        private ObservableCollection<BuildingModel> _buildings;
         
-        public ObservableCollection<Building> Buildings
+        public ObservableCollection<BuildingModel> Buildings
         { 
             get => _buildings;
             set
@@ -37,13 +37,13 @@ namespace UniProject.ViewModels
         }*/
         
         // Default constructor
-        public BuildingViewModel(School s)
+        public BuildingViewModel(SchoolModel s)
         {
-            Buildings = new ObservableCollection<Building>();
+            Buildings = new ObservableCollection<BuildingModel>();
             //returns from database buildings from selected school
             DataTable test2 = DbConn.query("select * from building where SchoolName = @1", s.SchoolName); 
-            Buildings = new ObservableCollection<Building>(test2.Select().ToList().Select(r =>
-                new Building(r["BuildingName"] as string,
+            Buildings = new ObservableCollection<BuildingModel>(test2.Select().ToList().Select(r =>
+                new BuildingModel(r["BuildingName"] as string,
                     r["BuildingAddress"] as string,
                     r["PictureUrl"] as string,
                     r["SchoolName"] as string)));

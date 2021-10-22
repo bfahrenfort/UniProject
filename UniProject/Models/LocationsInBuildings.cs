@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace UniProject.Models
 {
-    public class LocationsInBuildings
+    public class LocationsInBuildingsModel
     {
         public string LocationCol { get; set; } //primary key in database, not sure if needed here
         
@@ -18,7 +18,7 @@ namespace UniProject.Models
         
         public string SchoolName { get; set; }
 
-        public LocationsInBuildings(string c, string n, string b, string a, string s)
+        public LocationsInBuildingsModel(string c, string n, string b, string a, string s)
         {
             LocationCol = c;//primary key in database
             LocationName = n;

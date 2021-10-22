@@ -13,7 +13,7 @@ namespace UniProject.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SavedSearchesPage : ContentPage
     {
-        public School Selected { get; set; }
+        public SchoolModel Selected { get; set; }
 
         public SavedSearchesPage()
         {
@@ -22,7 +22,7 @@ namespace UniProject.Views
 
         async void SchoolClicked(object sender, SelectedItemChangedEventArgs e)
         {
-            School s = (((ListView) sender).BindingContext as SavedSearchesViewModel).Selected;
+            SchoolModel s = (((ListView) sender).BindingContext as SavedSearchesViewModel).Selected;
             await Navigation.PushAsync(new BuildingPage(s),true);
         }
     }

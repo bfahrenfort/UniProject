@@ -15,12 +15,12 @@ namespace UniProject.ViewModels
 {
     public class SchoolViewModel : INotifyPropertyChanged
     {
-        public School Selected { get; set; }
+        public SchoolModel Selected { get; set; }
         private const string TextSearchQuery = "select * from School where SchoolName like @1";
 
         //FIXME we don't really need an explicit backing field since we need to onpropertychanged it
-        private ObservableCollection<School> _schools;
-        public ObservableCollection<School> Schools
+        private ObservableCollection<SchoolModel> _schools;
+        public ObservableCollection<SchoolModel> Schools
         { 
             get => _schools;
             set
@@ -32,7 +32,7 @@ namespace UniProject.ViewModels
 
         public SchoolViewModel()
         {
-            Schools = new ObservableCollection<School>();
+            Schools = new ObservableCollection<SchoolModel>();
         }
         
         // Yes, this is technically a functional interface field, but it behaves like a method, so here it is.
@@ -40,8 +40,8 @@ namespace UniProject.ViewModels
         {
             DataTable dt = DbConn.query(TextSearchQuery, '%' + query + '%');
             // Don't touch my GARBAGE!!!
-            Schools = new ObservableCollection<School>(dt.Select().ToList().Select(r =>
-                new School(r["SchoolName"] as string, 
+            Schools = new ObservableCollection<SchoolModel>(dt.Select().ToList().Select(r =>
+                new SchoolModel(r["SchoolName"] as string, 
                            r["SchoolAddress"] as string, 
                            r["ApplicationURL"] as string, 
                            r["SchoolAcronym"] as string)));
