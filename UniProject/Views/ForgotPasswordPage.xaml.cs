@@ -35,5 +35,13 @@ namespace UniProject.Views
                 Navigation.PopAsync(); //Takes you back to the Login Page.
             }
         }
+        
+        //Button Action: Take them back to the Login Page.
+        //I'm not sure whether or not to remove this because they could simply hit
+        //the back button instead if they want to go back.
+        private void CancelButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
     }
 }

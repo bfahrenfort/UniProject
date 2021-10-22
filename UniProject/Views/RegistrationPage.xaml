@@ -13,6 +13,11 @@
                    TextColor="Black"
                    PlaceholderColor="Gray"/>
             
+            <Entry x:Name="NewEmail"
+                   Placeholder="Email"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"/>
+            
             <Entry x:Name="NewPassword"
                    Placeholder="Password"
                    IsPassword="True"
