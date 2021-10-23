@@ -15,8 +15,8 @@ namespace UniProject.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuildingPage : ContentPage
     {
-        private School school;
-        public BuildingPage(School s)
+        private SchoolModel school;
+        public BuildingPage(SchoolModel s)
         {
             // Get the selected school
             school = s;
@@ -27,7 +27,7 @@ namespace UniProject.Views
         
         async void BuildingClicked(object sender, EventArgs e)
         {
-            Building b = (((ListView) sender).BindingContext as BuildingViewModel).Selected;
+            BuildingModel b = (((ListView) sender).BindingContext as BuildingViewModel).Selected;
             await Navigation.PushAsync(new LocationPage(b),true);
         }
     }

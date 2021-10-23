@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace UniProject.Models
 {
-    public class School
+    public class SchoolModel
     {
         // Some sample Properties, subject to change as database spec is created
         public string SchoolName { get; set; }
@@ -18,7 +18,7 @@ namespace UniProject.Models
         public string SchoolAcronym { get; set; }
 
         // Kirby: Credit to Josh for fixing our binding issue due to auto-property tomfoolery and my incomplete knowledge of C#
-        public School(string n, string a, string u, string c)
+        public SchoolModel(string n, string a, string u, string c)
         {
             SchoolName = n;
             SchoolAddress = a;

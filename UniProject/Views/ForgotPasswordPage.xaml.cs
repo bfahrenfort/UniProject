@@ -17,6 +17,12 @@ namespace UniProject.Views
             InitializeComponent();
         }
         
+        //Prevents Android users from using the (hardware) back button.
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
+        
         //Button Action: Sends an email to the input email (if it exists) with a way to recover/reset their password.
         private void SendEmailButtonClicked(object sender, EventArgs e)
         {
@@ -32,16 +38,14 @@ namespace UniProject.Views
                 //Displays a message saying an email was sent and returns them to the Login screen.
                 DisplayAlert("Password Recovery", "An email has been sent to the input email" +
                                                 " with instructions to recover your password.", "Ok");
-                Navigation.PopAsync(); //Takes you back to the Login Page.
+                Navigation.PopModalAsync(); //Takes you back to the Login Page.
             }
         }
         
         //Button Action: Take them back to the Login Page.
-        //I'm not sure whether or not to remove this because they could simply hit
-        //the back button instead if they want to go back.
         private void CancelButtonClicked(object sender, EventArgs e)
         {
-            Navigation.PopAsync();
+            Navigation.PopModalAsync();
         }
     }
 }

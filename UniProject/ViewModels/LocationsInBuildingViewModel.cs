@@ -15,10 +15,10 @@ namespace UniProject.ViewModels
 {
     public class LocationsInBuildingViewModel: INotifyPropertyChanged
     {
-        private Building building;
-        private ObservableCollection<LocationsInBuildings> _locations;
+        private BuildingModel building;
+        private ObservableCollection<LocationsInBuildingsModel> _locations;
         
-        public ObservableCollection<LocationsInBuildings> LocationsInBuildings
+        public ObservableCollection<LocationsInBuildingsModel> LocationsInBuildings
         { 
             get => _locations;
             set
@@ -28,13 +28,13 @@ namespace UniProject.ViewModels
             } 
         }
         
-        public LocationsInBuildingViewModel(Building b)
+        public LocationsInBuildingViewModel(BuildingModel b)
         {
             //needs to display building name at top
             //queries to display 
             DataTable test1 = DbConn.query("select * from location where BuildingName = @1", b.BuildingName); //not tested
-            LocationsInBuildings = new ObservableCollection<LocationsInBuildings>(test1.Select().ToList().Select(r =>
-                new LocationsInBuildings(r["LocationCol"] as string,
+            LocationsInBuildings = new ObservableCollection<LocationsInBuildingsModel>(test1.Select().ToList().Select(r =>
+                new LocationsInBuildingsModel(r["LocationCol"] as string,
                     r["LocationName"] as string,
                     r["BuildingName"] as string,
                     r["LocationAddress"] as string,

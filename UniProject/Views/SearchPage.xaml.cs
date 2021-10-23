@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 using UniProject.Models;
 using UniProject.ViewModels;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace UniProject.Views
 {
     public partial class SearchPage : ContentPage
     {
-        public School Selected { get; set; }
+        public SchoolModel Selected { get; set; }
 
         public SearchPage()
         {
             InitializeComponent();
+            Navigation.PushModalAsync(new LoginPage());
         }
 
         async void SchoolClicked(object sender, EventArgs e)
-        {   
-            // Whenever an item is selected, that item is assigned to the SchoolViewModel's Selected property
-            // Get a reference to that item and pass it to the BuildingPage we push on the nav stack
-            School s = (((ListView) sender).BindingContext as SchoolViewModel).Selected;
+        {
+            SchoolModel s = (((ListView) sender).BindingContext as SchoolViewModel).Selected;
             await Navigation.PushAsync(new BuildingPage(s), true);
         }
 
@@ -34,3 +34,9 @@ namespace UniProject.Views
 
     }
 }
+/**
+public void SchoolSaved(object sender, EventArgs e)
+{
+    //query user id, save school name into the user saved database
+}
+**/

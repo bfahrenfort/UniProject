@@ -15,11 +15,11 @@ namespace UniProject.ViewModels
 {
     public class UserViewModel: INotifyPropertyChanged
     {
-        private User user;
+        private UserModel user;
 
         
         // Default constructor
-        public UserViewModel(User u)
+        public UserViewModel(UserModel u)
         {
             //Not needed yet;
             //DataTable test2 = DbConn.query("select * from building where Username = @1", u.Username);

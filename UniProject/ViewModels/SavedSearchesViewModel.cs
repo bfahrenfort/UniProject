@@ -15,10 +15,10 @@ namespace UniProject.ViewModels
 {
     public class SavedSearchesViewModel: INotifyPropertyChanged
     {
-        public School Selected { get; set; }
-        private ObservableCollection<School> _savedSearches;
+        public SchoolModel Selected { get; set; }
+        private ObservableCollection<SchoolModel> _savedSearches;
         
-        public ObservableCollection<School> SavedSearches
+        public ObservableCollection<SchoolModel> SavedSearches
         { 
             get => _savedSearches;
             set
@@ -31,11 +31,11 @@ namespace UniProject.ViewModels
         // Default constructor
         public SavedSearchesViewModel()
         {
-            SavedSearches = new ObservableCollection<School>();
+            SavedSearches = new ObservableCollection<SchoolModel>();
             //returns from database buildings from selected school
             DataTable test2 = DbConn.query("select * from School"); 
-            SavedSearches = new ObservableCollection<School>(test2.Select().ToList().Select(r =>
-                new School(r["SchoolName"] as string,
+            SavedSearches = new ObservableCollection<SchoolModel>(test2.Select().ToList().Select(r =>
+                new SchoolModel(r["SchoolName"] as string,
                     r["SchoolAddress"] as string,
                     r["ApplicationURL"] as string,
                     r["SchoolAcronym"] as string)));

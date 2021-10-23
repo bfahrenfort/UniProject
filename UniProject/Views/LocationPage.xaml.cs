@@ -13,9 +13,9 @@ namespace UniProject.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LocationPage : ContentPage
     {
-        private Building building;
+        private BuildingModel building;
         
-        public LocationPage(Building b)
+        public LocationPage(BuildingModel b)
         {
             building = b;
             BindingContext = new LocationsInBuildingViewModel(building);

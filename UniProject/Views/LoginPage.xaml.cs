@@ -16,7 +16,13 @@ namespace UniProject.Views
         {
             InitializeComponent();
         }
-        
+
+        //Prevents Android users from using the (hardware) back button.
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
+
         //Button Action: Login the user if information is correct, taking them to SearchPage.
         private void LoginButtonClicked(object sender, EventArgs e)
         {
@@ -26,7 +32,7 @@ namespace UniProject.Views
             {
                 //We need to find a way to change the MainPage such that the user can't login, hit 
                 //the back arrow, and end up back at the login screen. We want that closed after login.
-                Navigation.PushAsync(new SearchPage()); //Takes you to SearchPage; Adds SearchPage to stack.
+                Navigation.PopModalAsync(); //Takes you to SearchPage; Adds SearchPage to stack.
             }
             else
             {
@@ -38,13 +44,13 @@ namespace UniProject.Views
         //Button Action: Take them to the Forgot Password Page if they forgot their password.
         private void ForgotPasswordButtonTapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ForgotPasswordPage());
+            Navigation.PushModalAsync(new ForgotPasswordPage());
         }
         
         //Button Action: Take them to registration page if they don't have an account.
         private void RegisterButtonTapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new RegistrationPage());
+            Navigation.PushModalAsync(new RegistrationPage());
         }
     }
 }
