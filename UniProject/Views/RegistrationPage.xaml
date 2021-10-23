@@ -2,33 +2,59 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UniProject.Views.RegistrationPage">
+             x:Class="UniProject.Views.RegistrationPage"
+             BackgroundColor="#FFB266">
+    
     <ContentPage.Content>
         <StackLayout Padding="40" 
                      VerticalOptions="Center" 
                      HorizontalOptions="FillAndExpand">
             
-            <Entry x:Name="NewUsername"
-                   Placeholder="Username"
-                   TextColor="Black"
-                   PlaceholderColor="Gray"/>
+            <Frame
+                Padding="2"
+                BorderColor="Black"
+                Margin="0,0, 0, 10"> 
+                <Entry x:Name="NewUsername"
+                       Placeholder="Username"
+                       BackgroundColor="White"
+                       TextColor="Black"
+                       PlaceholderColor="Gray"/>  
+            </Frame>
             
-            <Entry x:Name="NewEmail"
-                   Placeholder="Email"
-                   TextColor="Black"
-                   PlaceholderColor="Gray"/>
+            <Frame
+                Padding="2"
+                BorderColor="Black"
+                Margin="0,0, 0, 10"> 
+                <Entry x:Name="NewEmail"
+                       Placeholder="Email"
+                       BackgroundColor="White"
+                       TextColor="Black"
+                       PlaceholderColor="Gray"/>  
+            </Frame>
             
-            <Entry x:Name="NewPassword"
-                   Placeholder="Password"
-                   IsPassword="True"
-                   TextColor="Black"
-                   PlaceholderColor="Gray"/>
+            <Frame
+                Padding="2"
+                BorderColor="Black"
+                Margin="0,0, 0, 10"> 
+                <Entry x:Name="NewPassword"
+                       Placeholder="Password"
+                       IsPassword="True"
+                       BackgroundColor="White"
+                       TextColor="Black"
+                       PlaceholderColor="Gray"/> 
+            </Frame>
             
-            <Entry x:Name="NewPasswordConfirm"
-                   Placeholder="Reenter Password"
-                   IsPassword="True"
-                   TextColor="Black"
-                   PlaceholderColor="Gray"/>
+            <Frame
+                Padding="2"
+                BorderColor="Black"
+                Margin="0,0, 0, 10"> 
+                <Entry x:Name="NewPasswordConfirm"
+                       Placeholder="Reenter Password"
+                       IsPassword="True"
+                       BackgroundColor="White"
+                       TextColor="Black"
+                       PlaceholderColor="Gray"/> 
+            </Frame>
             
             <Button VerticalOptions="Center"
                     Text="Create Account"

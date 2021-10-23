@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 namespace UniProject.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]

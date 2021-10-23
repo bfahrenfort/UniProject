@@ -1,7 +1,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:UniProject.ViewModels;assembly=UniProject"
-             x:Class="UniProject.Views.BuildingPage" >
+             x:Class="UniProject.Views.BuildingPage"
+             BackgroundColor="#FFB266">
     
     <!-- This context tells the layout that it will be working with a SchoolViewModel.
         It can be moved into higher or lower scopes as desired, 
@@ -28,7 +29,8 @@
                 <DataTemplate>
                     <!-- TextCell to determine what will show up on each list entry.
                         Bound to the Name property of each building in the list.-->
-                    <TextCell Text="{Binding BuildingName}" />
+                    <TextCell Text="{Binding BuildingName}"
+                              TextColor="White"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

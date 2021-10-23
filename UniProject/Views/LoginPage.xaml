@@ -2,22 +2,40 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UniProject.Views.LoginPage">
+             x:Class="UniProject.Views.LoginPage"
+             BackgroundColor="#FFB266">
+    
     <ContentPage.Content>
-        <StackLayout Padding="40" 
+        <StackLayout Padding="40, 200, 40 , 40" 
                      VerticalOptions="Center" 
                      HorizontalOptions="FillAndExpand">
             
-            <Entry x:Name="TextUsername"
-                   Placeholder="Username"
-                   TextColor="Black"
-                   PlaceholderColor="Gray"/>
+            <!--Need to figure out how to incorporate images.
+            I think Brandon mentioned streaming them in?-->
             
-            <Entry x:Name="TextPassword"
-                   Placeholder="Password"
-                   IsPassword="True"
-                   TextColor="Black"
-                   PlaceholderColor="Gray"/>
+            <Frame
+                Padding="2"
+                BorderColor="Black"
+                Margin="0,10"> 
+                <Entry x:Name="TextUsername"
+                       BackgroundColor="White"
+                       Placeholder="Username"
+                       PlaceholderColor="Gray"
+                       TextColor="Black"/>   
+            </Frame>
+            
+            <Frame
+                Padding="2"
+                BorderColor="Black"
+                Margin="0,0, 0, 5"> 
+                <Entry x:Name="TextPassword"
+                       IsPassword="True"
+                       BackgroundColor="White"
+                       Placeholder="Password"
+                       PlaceholderColor="Gray"
+                       TextColor="Black"
+                       MaxLength="20"/>   
+            </Frame>
             
             <Button VerticalOptions="Center"
                     Text="Login"
