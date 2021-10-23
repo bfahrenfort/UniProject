@@ -15,11 +15,19 @@ namespace UniProject.ViewModels
 {
     public class BuildingViewModel: INotifyPropertyChanged
     {
-        
-        public Building Selected { get; set; }
-        private School school;
+        private School _school;
+        public School School
+        {
+            get => _school;
+            set
+            {
+                _school = value;
+                OnPropertyChanged(nameof(School));
+            }
+        }
+        public string SchoolNameFormatted => $"School Name: {_school.SchoolName}"; // Convenience
+
         private ObservableCollection<Building> _buildings;
-        
         public ObservableCollection<Building> Buildings
         { 
             get => _buildings;
@@ -29,8 +37,13 @@ namespace UniProject.ViewModels
                 OnPropertyChanged(nameof(Buildings));
             } 
         }
+        
+        public Building Selected { get; set; } // The building in Buildings currently selected
 
        /*THIS DEFAULT CONSTRUCTOR BREAKS THE PROGRAM
+        I can't see why it would break it, because we never call this constructor in BuildingPage's code-behind 
+          or implicitly instantiate it in the layout XAML. Are you using the BuildingViewModel for more than one page?
+          That would absolutely break that page because it doesn't have a school passed to it. -Kirby
         public BuildingViewModel()
         {
             Buildings = new ObservableCollection<Building>();
@@ -39,9 +52,10 @@ namespace UniProject.ViewModels
         // Default constructor
         public BuildingViewModel(School s)
         {
+            _school = s;
             Buildings = new ObservableCollection<Building>();
             //returns from database buildings from selected school
-            DataTable test2 = DbConn.query("select * from building where SchoolName = @1", s.SchoolName); 
+            DataTable test2 = DbConn.query("select * from building where SchoolName = @1", _school.SchoolName); 
             Buildings = new ObservableCollection<Building>(test2.Select().ToList().Select(r =>
                 new Building(r["BuildingName"] as string,
                     r["BuildingAddress"] as string,

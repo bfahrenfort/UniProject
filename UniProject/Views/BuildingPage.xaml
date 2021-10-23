@@ -12,12 +12,13 @@
     <StackLayout>
         <!-- Using a Building View model -->
         <!--needs to be dynamic based on which selected school -->
+        <Label Text="{Binding SchoolNameFormatted}"
+               HorizontalOptions="Center"
+               VerticalOptions="StartAndExpand" />
         <Label Text="Buildings"
                HorizontalOptions="Center"
                VerticalOptions="StartAndExpand" />
         
-        
-        <!-- ListView, bound to the Schools list from the SchoolViewModel from the binding context-->
         <ListView x:Name="BuildingList"
                   ItemsSource="{Binding Buildings}"
                   SelectionMode="Single"
