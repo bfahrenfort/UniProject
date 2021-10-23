@@ -23,6 +23,8 @@ namespace UniProject.Views
 
         async void SchoolClicked(object sender, EventArgs e)
         {
+            // Whenever an item is selected, that item is assigned to the SchoolViewModel's Selected property
+            // Get a reference to that item and pass it to the BuildingPage we push on the nav stack
             SchoolModel s = (((ListView) sender).BindingContext as SchoolViewModel).Selected;
             await Navigation.PushAsync(new BuildingPage(s), true);
         }
@@ -34,9 +36,3 @@ namespace UniProject.Views
 
     }
 }
-/**
-public void SchoolSaved(object sender, EventArgs e)
-{
-    //query user id, save school name into the user saved database
-}
-**/

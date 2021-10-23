@@ -18,7 +18,9 @@ namespace UniProject.Views
         private SchoolModel school;
         public BuildingPage(SchoolModel s)
         {
+            // Get the selected school
             school = s;
+            // Pass that school to where we can bind to it, in the viewmodel we instantiate for our BindingContext
             BindingContext = new BuildingViewModel(school);
             InitializeComponent();
         }
