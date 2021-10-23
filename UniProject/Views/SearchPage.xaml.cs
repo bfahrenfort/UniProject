@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using UniProject.Models;
 using UniProject.ViewModels;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace UniProject.Views
 {
@@ -17,6 +18,7 @@ namespace UniProject.Views
         public SearchPage()
         {
             InitializeComponent();
+            Navigation.PushModalAsync(new LoginPage());
         }
 
         async void SchoolClicked(object sender, EventArgs e)

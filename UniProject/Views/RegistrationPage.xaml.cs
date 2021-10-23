@@ -17,6 +17,12 @@ namespace UniProject.Views
             InitializeComponent();
         }
         
+        //Prevents Android users from using the (hardware) back button.
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
+        
         //Button Action: Create the exist or return an error.
         //If account successfully created, take them to login page.
         private void CreateAccountButtonClicked(object sender, EventArgs e)
@@ -49,7 +55,7 @@ namespace UniProject.Views
                 //addUserToDatabase(Username, Password, Email)
                 DisplayAlert("Account Creation", "Account Successfully Created!", "Ok");
                 //Takes you back to the LoginPage
-                Navigation.PopAsync(); 
+                Navigation.PopModalAsync(); 
 
             }
         }
@@ -57,7 +63,7 @@ namespace UniProject.Views
         //Button Action: If the account already exists, take them to login page.
         private void ExistingAccountButtonTapped(object sender, EventArgs e)
         {
-            Navigation.PopAsync(); 
+            Navigation.PopModalAsync(); 
         }
     }
 }
