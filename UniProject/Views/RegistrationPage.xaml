@@ -6,10 +6,11 @@
              BackgroundColor="#FFB266">
     
     <ContentPage.Content>
-        <StackLayout Padding="40" 
+        <StackLayout Padding="20, 0, 20, 80" 
                      VerticalOptions="Center" 
                      HorizontalOptions="FillAndExpand">
-            
+            <Image Source = "https://i.ibb.co/BVtg4Fv/Untitled-design-3.png"
+            />
             <Frame
                 Padding="2"
                 BorderColor="Black"

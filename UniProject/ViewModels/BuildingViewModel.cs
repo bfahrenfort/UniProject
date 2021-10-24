@@ -25,8 +25,10 @@ namespace UniProject.ViewModels
                 OnPropertyChanged(nameof(School));
             }
         }
-        public string SchoolNameFormatted => $"School Name: {_school.SchoolName}"; // Convenience
-
+        public string SchoolNameFormatted => $"{_school.SchoolName}"; // Convenience
+        public string SchoolAddressLabel => $"{_school.SchoolAddress}";
+        public string SchoolUrlLabel => $"{_school.ApplicationURL}";
+    
         private ObservableCollection<BuildingModel> _buildings;
         public ObservableCollection<BuildingModel> Buildings
         { 
