@@ -8,6 +8,7 @@ using UniProject.Models;
 using UniProject.Utils;
 using Xamarin.Forms;
 using UniProject.Annotations;
+using Xamarin.Essentials;
 
 //View Model Displaying list of different buildings on campus
 
@@ -41,16 +42,8 @@ namespace UniProject.ViewModels
         }
         
         public BuildingModel Selected { get; set; } // The building in Buildings currently selected
-
-       /*THIS DEFAULT CONSTRUCTOR BREAKS THE PROGRAM
-        I can't see why it would break it, because we never call this constructor in BuildingPage's code-behind 
-          or implicitly instantiate it in the layout XAML. Are you using the BuildingViewModel for more than one page?
-          That would absolutely break that page because it doesn't have a school passed to it. -Kirby
-        public BuildingViewModel()
-        {
-            Buildings = new ObservableCollection<Building>();
-        }*/
-       
+        
+        public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
         public BuildingViewModel(SchoolModel s)
         {
             _school = s;

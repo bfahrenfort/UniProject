@@ -14,10 +14,11 @@
         <!-- Using a Building View model -->
         <!--needs to be dynamic based on which selected school -->
         <Label Text="{Binding SchoolNameFormatted}"
+               MaxLines="1"
                HorizontalOptions="Center"
                VerticalOptions="StartAndExpand" 
                TextColor="Black"
-               FontSize="32"
+               FontSize="30"
                Padding="0,20"
                FontAttributes="Bold"/>
         <Label Text="{Binding SchoolAddressLabel}"
@@ -26,21 +27,17 @@
                FontSize="20"
                TextColor="Black"/>
         <Label Text="Apply Now"
+               Padding="0,20"
+               HorizontalOptions="Center"
+               VerticalOptions="StartAndExpand"
               TextColor="Blue"
-              FontSize="20"
+              FontSize="25"
               TextDecorations="Underline">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding TapCommand}"
                                       CommandParameter="{Binding SchoolUrlLabel}"/>
             </Label.GestureRecognizers>
             </Label>
-            <Label Text="{Binding SchoolUrlLabel}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="StartAndExpand"
-                   FontSize="20"
-                   TextColor="Black"
-                   Padding = "10"/>
-        
         <ListView x:Name="BuildingList"
                   ItemsSource="{Binding Buildings}"
                   SelectionMode="Single"

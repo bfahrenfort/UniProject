@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using UniProject.Models;
 using UniProject.ViewModels;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -25,6 +26,7 @@ namespace UniProject.Views
             school = s;
             // Pass that school to where we can bind to it, in the viewmodel we instantiate for our BindingContext
             BindingContext = new BuildingViewModel(school);
+            
             InitializeComponent();
         }
         
@@ -33,5 +35,6 @@ namespace UniProject.Views
             BuildingModel b = (((ListView) sender).BindingContext as BuildingViewModel).Selected;
             await Navigation.PushAsync(new LocationPage(b),true);
         }
+        
     }
 }
