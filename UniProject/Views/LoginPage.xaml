@@ -9,8 +9,7 @@
         <StackLayout Padding="40, 0, 40 , 200" 
                      VerticalOptions="Center" 
                      HorizontalOptions="FillAndExpand">
-            <Image Source = "https://i.ibb.co/BVtg4Fv/Untitled-design-3.png"
-                   />
+            <Image Source = "https://i.ibb.co/BVtg4Fv/Untitled-design-3.png"/>
             <!--Need to figure out how to incorporate images.
             I think Brandon mentioned streaming them in?-->
             

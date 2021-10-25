@@ -15,29 +15,46 @@
         <!--needs to be dynamic based on which selected school -->
         <Label Text="{Binding SchoolNameFormatted}"
                MaxLines="1"
-               HorizontalOptions="Center"
-               VerticalOptions="StartAndExpand" 
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="FillAndExpand" 
                TextColor="Black"
-               FontSize="30"
-               Padding="0,20"
+               FontSize="Title"
+               HorizontalTextAlignment="Center"
+               Padding="0, 60,0, 10"
                FontAttributes="Bold"/>
         <Label Text="{Binding SchoolAddressLabel}"
-               HorizontalOptions="Center"
-               VerticalOptions="StartAndExpand" 
-               FontSize="20"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="FillAndExpand" 
+               MaxLines="2"
+               Padding="0,20,0,10"
+               HorizontalTextAlignment="Center"
+               FontSize="Subtitle"
                TextColor="Black"/>
+        <Frame
+            CornerRadius="20"
+            BackgroundColor="LightGray"
+            Padding="1,0 "
+            Margin="40,30">
         <Label Text="Apply Now"
-               Padding="0,20"
                HorizontalOptions="Center"
-               VerticalOptions="StartAndExpand"
-              TextColor="Blue"
-              FontSize="25"
-              TextDecorations="Underline">
+               VerticalOptions="Start"
+               TextColor="Blue"
+               FontAttributes="Bold"
+               FontSize="25"
+               TextDecorations="Underline">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding TapCommand}"
                                       CommandParameter="{Binding SchoolUrlLabel}"/>
             </Label.GestureRecognizers>
             </Label>
+        </Frame>
+        <Line X1 = "-1000"
+              X2 = "1000"
+              Y1 = "0"
+              Y2 = "0"
+              Stroke="Black"
+              StrokeThickness="4"
+            />
         <ListView x:Name="BuildingList"
                   ItemsSource="{Binding Buildings}"
                   SelectionMode="Single"
