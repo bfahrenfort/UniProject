@@ -52,7 +52,7 @@
                                        Text ="{Binding SchoolName}"
                                        HorizontalOptions="StartAndExpand"
                                        VerticalOptions="Center"
-                                       TextColor="Gray"
+                                       TextColor="DarkGoldenrod"
                                        FontSize="22"
                                        Padding="0,15,0,15"
                                 />

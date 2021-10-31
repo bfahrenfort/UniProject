@@ -18,7 +18,7 @@ namespace UniProject.Views
         public SearchPage()
         {
             InitializeComponent();
-           // Navigation.PushModalAsync(new LoginPage());
+            Navigation.PushModalAsync(new LoginPage());
         }
 
         async void SchoolClicked(object sender, EventArgs e)

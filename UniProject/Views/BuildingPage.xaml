@@ -31,13 +31,13 @@
         <!--apply now button-->
         <Frame
             CornerRadius="20"
-            BackgroundColor="DarkGray"
+            BackgroundColor="DarkOrange"
             Padding="1,0 "
             Margin="40,30">
         <Label Text="Apply Now"
                HorizontalOptions="Center"
                VerticalOptions="Start"
-               TextColor="DarkBlue"
+               TextColor="DodgerBlue"
                FontAttributes="Bold"
                FontSize="25"
                Padding="130,0,130,0 "
@@ -75,7 +75,7 @@
                         <Label Text="{Binding BuildingName}"
                                HorizontalOptions="StartAndExpand"
                                VerticalOptions="Center"
-                               TextColor="Gray"
+                               TextColor="DarkGoldenrod"
                                FontSize="22"
                                VerticalTextAlignment="Center"
                                Padding="0,15,0,15"

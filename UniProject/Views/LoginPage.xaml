@@ -3,16 +3,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UniProject.Views.LoginPage"
-             BackgroundColor="#FFB266">
+             BackgroundColor="Black">
     
     <ContentPage.Content>
         <StackLayout Padding="40, 0, 40 , 200" 
                      VerticalOptions="Center" 
                      HorizontalOptions="FillAndExpand">
+            <!-- application logo-->
             <Image Source = "https://i.ibb.co/BVtg4Fv/Untitled-design-3.png"/>
-            <!--Need to figure out how to incorporate images.
-            I think Brandon mentioned streaming them in?-->
-            
+            <!--username and password text boxes-->
             <Frame
                 Padding="2"
                 BorderColor="Black"
@@ -23,7 +22,6 @@
                        PlaceholderColor="Gray"
                        TextColor="Black"/>   
             </Frame>
-            
             <Frame
                 Padding="2"
                 BorderColor="Black"
@@ -36,39 +34,37 @@
                        TextColor="Black"
                        MaxLength="20"/>   
             </Frame>
-            
+            <!-- login button-->
             <Button VerticalOptions="Center"
                     Text="Login"
                     TextColor="Black"
-                    BorderWidth="1.5"
+                    BorderWidth="1"
                     CornerRadius="50"
+                    BackgroundColor="orange"
+                    FontAttributes="Bold"
                     Clicked="LoginButtonClicked"/>
             
-            <!-- Modify to make the text ("Forgot Password") also a button -->
+            <!-- forgot password button-->
             <Label Text="Forgot Password" 
-                   TextColor="Gray"
+                   TextColor="DarkGoldenrod"
                    FontAttributes="Bold"
                    HorizontalOptions="Center">
-                
-                <!-- Modify to make the text (Forgot Password) also a button -->
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ForgotPasswordButtonTapped"/>
                 </Label.GestureRecognizers>
             </Label>
-            
+            <!-- create account button-->
             <Label HorizontalOptions="Center">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Don't have an account? "
-                              TextColor="Gray"/>
-                        
+                              TextColor="DarkGray"/>
                         <Span Text="Register Here" 
-                              TextColor="Gray"
+                              TextColor="DarkGoldenrod"
                               FontAttributes="Bold"
                               TextDecorations="Underline"/>
                     </FormattedString>
                 </Label.FormattedText>
-                <!-- Modify to make the text (Register) also a button -->
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="RegisterButtonTapped"/>
                 </Label.GestureRecognizers>
