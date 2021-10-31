@@ -2,70 +2,94 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:UniProject.ViewModels;assembly=UniProject"
              x:Class="UniProject.Views.BuildingPage"
-             BackgroundColor="#FFB266">
+             BackgroundColor="Black">
     
     <!-- This context tells the layout that it will be working with a SchoolViewModel.
         It can be moved into higher or lower scopes as desired, 
         for instance if you wish to have a ListView bound to a BuildingViewModel but also require another binding
         context somewhere else-->
 
-
     <StackLayout>
-        <!-- Using a Building View model -->
-        <!--needs to be dynamic based on which selected school -->
+        <!--header of page-->
         <Label Text="{Binding SchoolNameFormatted}"
-               MaxLines="1"
+               MaxLines="2"
                HorizontalOptions="CenterAndExpand"
-               VerticalOptions="FillAndExpand" 
-               TextColor="Black"
-               FontSize="Title"
+               VerticalOptions="Center" 
+               TextColor="DarkGray"
+               FontSize="35"
                HorizontalTextAlignment="Center"
                Padding="0, 60,0, 10"
                FontAttributes="Bold"/>
         <Label Text="{Binding SchoolAddressLabel}"
-               HorizontalOptions="CenterAndExpand"
-               VerticalOptions="FillAndExpand" 
+               HorizontalOptions="Center"
+               VerticalOptions="Center" 
                MaxLines="2"
                Padding="0,20,0,10"
                HorizontalTextAlignment="Center"
-               FontSize="Subtitle"
-               TextColor="Black"/>
+               FontSize="25"
+               TextColor="DarkGray"/>
+        <!--apply now button-->
         <Frame
             CornerRadius="20"
-            BackgroundColor="LightGray"
+            BackgroundColor="DarkGray"
             Padding="1,0 "
             Margin="40,30">
         <Label Text="Apply Now"
                HorizontalOptions="Center"
                VerticalOptions="Start"
-               TextColor="Blue"
+               TextColor="DarkBlue"
                FontAttributes="Bold"
                FontSize="25"
+               Padding="130,0,130,0 "
                TextDecorations="Underline">
+            <!--opens default browser to application url-->
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding TapCommand}"
                                       CommandParameter="{Binding SchoolUrlLabel}"/>
             </Label.GestureRecognizers>
             </Label>
         </Frame>
+        
+        <!-- line seperating header and footer-->
         <Line X1 = "-1000"
               X2 = "1000"
               Y1 = "0"
               Y2 = "0"
-              Stroke="Black"
+              Stroke="DarkGray"
               StrokeThickness="4"
             />
+        
         <ListView x:Name="BuildingList"
                   ItemsSource="{Binding Buildings}"
                   SelectionMode="Single"
                   ItemSelected="BuildingClicked"
-                  SelectedItem="{Binding Selected}">
+                  SelectedItem="{Binding Selected}"
+                  RowHeight="70"
+                  HorizontalOptions="Center">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <!-- TextCell to determine what will show up on each list entry.
-                        Bound to the Name property of each building in the list.-->
-                    <TextCell Text="{Binding BuildingName}"
-                              TextColor="White"/>
+                    <ViewCell>
+                        <!--footer of page-->
+                        <StackLayout>
+                        <!-- displays rows of buildings that belong to the selected school -->
+                        <Label Text="{Binding BuildingName}"
+                               HorizontalOptions="StartAndExpand"
+                               VerticalOptions="Center"
+                               TextColor="Gray"
+                               FontSize="22"
+                               VerticalTextAlignment="Center"
+                               Padding="0,15,0,15"
+                               MaxLines="2"/>
+                        <!-- line dividing rows-->
+                        <Line X1="-1000"
+                              X2="1000"
+                              Y1 = "0"
+                              Y2 = "0"
+                              Stroke="Gray"
+                              StrokeThickness="3"
+                        />
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

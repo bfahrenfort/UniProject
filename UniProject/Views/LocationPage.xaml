@@ -2,39 +2,85 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:UniProject.ViewModels;assembly=UniProject"
              x:Class="UniProject.Views.LocationPage"
-             BackgroundColor="#FFB266">
+             BackgroundColor="Black">
     
-    <!-- This context tells the layout that it will be working with a SchoolViewModel.
-        It can be moved into higher or lower scopes as desired, 
-        for instance if you wish to have a ListView bound to a LocationsInBuildingViewModel but also require another binding
-        context somewhere else-->
-
-
+    
+    <!-- header of page-->
     <StackLayout>
-        <!-- Using a Location View model -->
-        <!--needs to be dynamic based on which selected Building -->
+        <!-- image of building-->
+        <Image Source = "{Binding ImageUrlFormatted}"
+               Aspect="Fill"/>
+        <!-- name of building-->
         <Label Text="{Binding BuildingNameFormatted}"
-               MaxLines="1"
-               HorizontalOptions="Center"
-               VerticalOptions="StartAndExpand" 
-               TextColor="Black"
-               FontSize="30"
+               MaxLines="2"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="FillAndExpand" 
+               TextColor="DarkGray"
+               HorizontalTextAlignment="Center"
+               FontSize="35"
                Padding="0,20"
                FontAttributes="Bold"/>
+        <!-- address of building-->
         <Label Text="{Binding BuildingAddressFormatted}"
                HorizontalOptions="Center"
                VerticalOptions="StartAndExpand" 
-               FontSize="20"
-               TextColor="Black"/>
-        <!-- ListView, bound to the Schools list from the SchoolViewModel from the binding context-->
+               FontSize="25"
+               TextColor="DarkGray"
+               Padding="0,0,0,30"/>
+        <!-- line dividing header and footer-->
+        <Line X1 = "-1000"
+              X2 = "1000"
+              Y1 = "0"
+              Y2 = "0"
+              Stroke="DarkGray"
+              StrokeThickness="4"
+        />
+        
         <ListView x:Name="LocationList"
-                  ItemsSource="{Binding LocationsInBuildings}">
+                  ItemsSource="{Binding LocationsInBuildings}"
+                  HasUnevenRows="True"
+                  RowHeight="50">
         <ListView.ItemTemplate>
-                <DataTemplate>
-                    <!-- TextCell to determine what will show up on each list entry.
-                        Bound to the Name property of each building in the list.-->
-                    <TextCell Text="{Binding LocationName}" 
-                              TextColor="White"/>
+            <DataTemplate>
+                <ViewCell IsEnabled="False">
+                    <!-- footer of page-->
+                    <StackLayout>
+                            <Grid>
+                                <!-- defines size of each column within a row-->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <!-- left column, name of location in building-->
+                                <Label Grid.Column="0"
+                                    Text ="{Binding LocationName}"
+                                       HorizontalOptions="StartAndExpand"
+                                       VerticalOptions="Center"
+                                       TextColor="Gray"
+                                       FontSize="22"
+                                    Padding="0,15,0,15"
+                                />
+                                <!-- right column, displays room number of location in building-->
+                                <Label Grid.Column="1"
+                                       Text = "{Binding LocationAddress}"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Center"
+                                       TextColor="DarkOrange"
+                                       FontSize="20"
+                                       Padding="0,15,0,15"
+                                />
+                            </Grid>
+                        <!--line seperating rows--> 
+                        <Line X1="-1000"
+                              X2="1000"
+                              Y1 = "0"
+                              Y2 = "0"
+                              Stroke="Gray"
+                              StrokeThickness="3"
+                        />
+                        </StackLayout>
+                    </ViewCell>
+
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

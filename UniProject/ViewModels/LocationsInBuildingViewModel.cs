@@ -9,6 +9,7 @@ using UniProject.Models;
 using UniProject.Utils;
 using Xamarin.Forms;
 using UniProject.Annotations;
+using Xamarin.Essentials;
 
 //View model displaying list of different features within each building
 namespace UniProject.ViewModels
@@ -17,7 +18,7 @@ namespace UniProject.ViewModels
     {
         private BuildingModel building;
         private ObservableCollection<LocationsInBuildingsModel> _locations;
-        
+        private LocationsInBuildingsModel locationbinding;
         private BuildingModel _building;
         public BuildingModel Building
         {
@@ -28,9 +29,21 @@ namespace UniProject.ViewModels
                 OnPropertyChanged(nameof(Building));
             }
         }
+
+        public LocationsInBuildingsModel Location
+        {
+            get => locationbinding;
+            set
+            {
+                locationbinding = value;
+                OnPropertyChanged(nameof(Location));
+            }
+        }
         public string BuildingNameFormatted => $"{_building.BuildingName}"; // Convenience
         public string BuildingPictureFormatted => $"{_building.PictureUrl}";
         public string BuildingAddressFormatted => $"{_building.BuildingAddress}";
+        public string ImageUrlFormatted => $"{_building.PictureUrl}";
+        
         public ObservableCollection<LocationsInBuildingsModel> LocationsInBuildings
         { 
             get => _locations;
@@ -41,6 +54,7 @@ namespace UniProject.ViewModels
             } 
         }
         
+        public string RoomNumFormatted => $"{locationbinding.LocationAddress}";
         public LocationsInBuildingViewModel(BuildingModel b)
         {
             //needs to display building name at top
