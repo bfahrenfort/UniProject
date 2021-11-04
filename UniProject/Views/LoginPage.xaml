@@ -10,7 +10,7 @@
                      VerticalOptions="Center" 
                      HorizontalOptions="FillAndExpand">
             <!-- application logo-->
-            <Image Source = "https://i.ibb.co/BVtg4Fv/Untitled-design-3.png"/>
+            <Image Source = "https://i.ibb.co/DWVtsqF/Untitled-design-2.png"/>
             <!--username and password text boxes-->
             <Frame
                 Padding="2"
