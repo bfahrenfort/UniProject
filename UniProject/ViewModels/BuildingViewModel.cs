@@ -16,7 +16,7 @@ namespace UniProject.ViewModels
 {
     public class BuildingViewModel: INotifyPropertyChanged
     {
-        private SchoolModel _school;
+        private SchoolModel _school; // The School this building list is returned from
         public SchoolModel School
         {
             get => _school;
@@ -26,7 +26,7 @@ namespace UniProject.ViewModels
                 OnPropertyChanged(nameof(School));
             }
         }
-        public string SchoolNameFormatted => $"{_school.SchoolName}"; // Convenience
+        public string SchoolNameFormatted => $"{_school.SchoolName}"; // For convenience, in accordance with MVVM
         public string SchoolAddressLabel => $"{_school.SchoolAddress}";
         public string SchoolUrlLabel => $"{_school.ApplicationURL}";
     
@@ -56,6 +56,8 @@ namespace UniProject.ViewModels
                     r["SchoolName"] as string)));
 
         }
+        
+        // Required definitions to update the view
         public event PropertyChangedEventHandler PropertyChanged;
         
         [NotifyPropertyChangedInvocator]
