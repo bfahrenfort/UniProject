@@ -1,4 +1,5 @@
-﻿namespace UniProject.Utils
+// Globals
+namespace UniProject.Utils
 {
     public class Utilities
     {
