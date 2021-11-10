@@ -3,9 +3,9 @@ using System.Runtime.CompilerServices;
 
 using Xamarin.Forms;
 
-//features needed for User Login
 namespace UniProject.Models
 {
+    // Class to store user information from database
     public class UserModel
     {
         public int UserId { get; set; }
