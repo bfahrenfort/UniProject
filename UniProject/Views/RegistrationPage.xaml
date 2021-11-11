@@ -3,13 +3,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UniProject.Views.RegistrationPage"
-             BackgroundColor="Black">
+             BackgroundColor="#121212">
     
     <ContentPage.Content>
+        
+        
         <StackLayout Padding="20, 0, 20, 80" 
                      VerticalOptions="Center" 
                      HorizontalOptions="FillAndExpand">
-            <Image Source = "https://i.ibb.co/DWVtsqF/Untitled-design-2.png"/>
+            
+            <Image Source = "https://i.ibb.co/0QHkWg2/Uni-Tour-Logo.png"/>
+            
             <Frame
                 Padding="2"
                 BorderColor="Black"
