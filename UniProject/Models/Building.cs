@@ -2,9 +2,9 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
-//features needed for Building
 namespace UniProject.Models
 {
+    // Building on or around a School, will potentially contain locations of interest
     public class BuildingModel
     {
         public string BuildingName { get; set; }

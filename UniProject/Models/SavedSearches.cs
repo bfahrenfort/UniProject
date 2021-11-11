@@ -1,5 +1,6 @@
 namespace UniProject.Models
 {
+    // A single saved search
     public class SavedSearchesModel
     {
         public int UserId { get; set; }

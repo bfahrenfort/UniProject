@@ -19,7 +19,8 @@ namespace UniProject.Utils
             cmd.CommandText = query;
             foreach(object item in args)
             {
-                cmd.Parameters.AddWithValue("@" + count, item); // To mitigate the risk of SQL injection
+                // Populate the placeholders in the query to mitigate the risk of SQL injection
+                cmd.Parameters.AddWithValue("@" + count, item);
                 count++;
             }
 

@@ -2,10 +2,9 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
-//features needed for Locations in Buildings
-
 namespace UniProject.Models
 {
+    // Location in a building, with information about that location
     public class LocationsInBuildingsModel
     {
         public string LocationCol { get; set; } //primary key in database, not sure if needed here
