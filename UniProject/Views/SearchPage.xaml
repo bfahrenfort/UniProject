@@ -90,9 +90,15 @@
                                   StrokeThickness="3"
                             />
                         </StackLayout>
+                        
                     </ViewCell>
+                    
                 </DataTemplate>
+                
             </ListView.ItemTemplate>
+            
         </ListView>
+        
     </StackLayout>
+    
 </ContentPage>

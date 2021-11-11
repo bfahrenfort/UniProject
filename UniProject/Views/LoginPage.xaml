@@ -40,7 +40,7 @@
                     </StackLayout>
                 </Frame>
                 
-                <!-- Remember me Checkbox & Forgot Password Button  -->
+                <!-- Remember Me Checkbox & Forgot Password Button  -->
                 <StackLayout Orientation="Horizontal">
                     <CheckBox IsChecked="False" Color="#20C073"/>
                     <Label Text="Remember me" TextColor="White" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>

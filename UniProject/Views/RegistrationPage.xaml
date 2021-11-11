@@ -83,6 +83,9 @@
                     <TapGestureRecognizer Tapped="ExistingAccountButtonTapped"/>
                 </Label.GestureRecognizers>
             </Label>
+            
         </StackLayout>
+        
     </ContentPage.Content>
+    
 </ContentPage>

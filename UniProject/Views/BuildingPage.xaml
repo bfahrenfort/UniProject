@@ -63,7 +63,6 @@
         <!-- Pulling in and displaying the list of buildings for the college-->
         <ListView x:Name="BuildingList"
                   ItemsSource="{Binding Buildings}"
-             <!-- Styling to indicate and navigate to the clicked option-->
                   SelectionMode="Single"
                   ItemSelected="BuildingClicked"
                   SelectedItem="{Binding Selected}"
@@ -89,12 +88,17 @@
                               Y1 = "0"
                               Y2 = "0"
                               Stroke="Gray"
-                              StrokeThickness="3"
-                        />
+                              StrokeThickness="3"/>
                         </StackLayout>
+                        
                     </ViewCell>
+                    
                 </DataTemplate>
+                
             </ListView.ItemTemplate>
+            
         </ListView>
+        
     </StackLayout>
+    
 </ContentPage>
