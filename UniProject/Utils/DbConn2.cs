@@ -1,4 +1,6 @@
+using System;
 using System.Data;
+using System.Net.NetworkInformation;
 using MySqlConnector;
 
 namespace UniProject.Utils
@@ -36,7 +38,28 @@ namespace UniProject.Utils
 
             return dt;
         }
-        
+
+        public static object Addquery(string query, params object[] args)
+        {
+            int count = 1;
+            // Create command
+            var cmd = new MySqlCommand();
+            cmd.CommandText = query;
+            foreach (object item in args)
+            {
+                cmd.Parameters.AddWithValue("@" + count, item); // To mitigate the risk of SQL injection
+                count++;
+            }
+
+            // Connect to database and execute command
+            using (var dbConn2 = new MySqlConnection(Utilities.UserConnString))
+            {
+                dbConn2.Open();
+                cmd.Connection = dbConn2;
+                return "added";
+            }
+        }
+
         public static object QueryScalar(string query, params object[] args)
         {
             int count = 1;

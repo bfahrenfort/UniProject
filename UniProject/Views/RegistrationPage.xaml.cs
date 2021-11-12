@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using UniProject.Utils;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -27,39 +27,31 @@ namespace UniProject.Views
         //If account successfully created, take them to login page.
         private void CreateAccountButtonClicked(object sender, EventArgs e)
         {
-            //Temporary until we can pass information to and from database
-            //to validate if the user's credentials exist/is correct
-            
-            /**
-             * First, check if the account already exists
-             *It's worth considering creating parameters for password length,
-             * what symbols should be used, and the use of
-             * a capital and/or lowercase letter(s), etc.
-             * 
-            if(User == UserInDatabase || Email == EmailInDatabase)
+            var usernameExists = DbConn2.QueryScalar("SELECT * FROM user WHERE Username = @1", NewUsername.Text);
+            var emailExists = DbConn2.QueryScalar("SELECT * FROM user WHERE Email = @1", NewEmail.Text);
+            if (usernameExists != null) // username already used
             {
-                //Displays an error if login information already exists.
-                DisplayAlert("Error", "Username or Email already exists!", "Ok"); 
+                DisplayAlert("Error!", "Username already in use", "Ok");
             }
-            **/
-            
-            //Next, we check if the passwords entered match up.
-            if (NewPassword.Text != NewPasswordConfirm.Text)
+            else if (emailExists != null) // email already used
             {
-                
-                DisplayAlert("Error", "Passwords don't match. Please try again.", "Ok");
+                DisplayAlert("Error!", "Email already in use", "Ok");
             }
-            //Finally, the account was successfully created.
-            else
+            else //passwords do not match
             {
-                //addUserToDatabase(Username, Password, Email)
-                DisplayAlert("Account Creation", "Account Successfully Created!", "Ok");
-                //Takes you back to the LoginPage
-                Navigation.PopModalAsync(); 
-
+                if (NewPassword.Text != NewPasswordConfirm.Text)
+                {
+                    DisplayAlert("Error", "Passwords don't match. Please try again.", "Ok");
+                }
+                else //account created successfully
+                {
+                    DbConn2.Query("INSERT INTO user (Username, Password, Email) Values (@1, @2, @3)", NewUsername.Text, NewPassword.Text, NewEmail.Text);
+                    DisplayAlert("Account Creation", "Account Successfully Created!", "Ok");
+                    Navigation.PopModalAsync(); 
+                }
             }
         }
-        
+
         //Button Action: If the account already exists, take them to login page.
         private void ExistingAccountButtonTapped(object sender, EventArgs e)
         {
