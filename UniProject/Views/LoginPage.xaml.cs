@@ -29,17 +29,24 @@ namespace UniProject.Views
         {
             
             var usernameExists = DbConn2.QueryScalar("SELECT * FROM user WHERE Username = @1", TextUsername.Text);
-            if ((int) usernameExists > 0)
-            {
-                Navigation.PopModalAsync();
-            }
-            //if (TextUsername.Text == "Admin" && TextPassword.Text == "123")
-            // Navigation.PopModalAsync(); //Takes you to SearchPage; Adds SearchPage to stack.
-            else
+            
+            //Checks if there is any result for the entered Username.
+            if (usernameExists == null)
             {
                 //Displays an error if login information is incorrect/doesn't exist.
-                DisplayAlert("Error", "Username or Password is incorrect!", "Ok"); 
+                DisplayAlert("Error!",   "Username or Password is incorrect or doesn't exist." , "Ok");
             }
+            
+            //If it finds a matching result, it will pop-up with an alert with the return value (should be a 1).
+            else //(int) usernameExists == 1
+            {
+                //Navigation.PopModalAsync(); //Takes you to SearchPage; Adds SearchPage to stack.
+                DisplayAlert("Success!", "Returned: " + (int) usernameExists, "Let's Go!!!"); 
+            }
+           
+            //You COULD further test this by adding an else if that says "else if ((int) usernameExists == 1)" and an
+            //else statement with some sort of error/exception.
+            
         }
         
         //Button Action: Take them to the Forgot Password Page if they forgot their password.
