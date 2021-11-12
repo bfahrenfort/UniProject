@@ -16,7 +16,6 @@ namespace UniProject.Views
         public LoginPage()
         {
             InitializeComponent();
-            string untest = TextUsername.Text;
         }
 
         //Prevents Android users from using the (hardware) back button.
@@ -28,18 +27,14 @@ namespace UniProject.Views
         //Button Action: Login the user if information is correct, taking them to SearchPage.
         private void LoginButtonClicked(object sender, EventArgs e)
         {
-            string sql = "SELECT COUNT(*) FROM user WHERE username = @1", untest;
-            var test2 = DbConn2.QueryScalar(sql);
-            if ((int) test2 > 0)
+            
+            var usernameExists = DbConn2.QueryScalar("SELECT * FROM user WHERE Username = @1", TextUsername.Text);
+            if ((int) usernameExists > 0)
             {
-                
+                Navigation.PopModalAsync();
             }
-            if (TextUsername.Text == "Admin" && TextPassword.Text == "123")
-            {
-                //We need to find a way to change the MainPage such that the user can't login, hit 
-                //the back arrow, and end up back at the login screen. We want that closed after login.
-                Navigation.PopModalAsync(); //Takes you to SearchPage; Adds SearchPage to stack.
-            }
+            //if (TextUsername.Text == "Admin" && TextPassword.Text == "123")
+            // Navigation.PopModalAsync(); //Takes you to SearchPage; Adds SearchPage to stack.
             else
             {
                 //Displays an error if login information is incorrect/doesn't exist.
