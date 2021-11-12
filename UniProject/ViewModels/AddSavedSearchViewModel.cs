@@ -41,7 +41,7 @@ namespace UniProject.ViewModels
             _school = s;
             _user = u;
             //returns from database buildings from selected school
-            DataTable test2 = DbConn2.query("INSERT INTO savedsearches (UserId, SavedSchool) Values (@1, @2)", _user.UserId,_school.SchoolName);
+            DataTable test2 = DbConn2.Query("INSERT INTO savedsearches (UserId, SavedSchool) Values (@1, @2)", _user.UserId,_school.SchoolName);
             
         }
         public event PropertyChangedEventHandler PropertyChanged;

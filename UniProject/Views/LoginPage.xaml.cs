@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
-
+using UniProject.Utils;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 namespace UniProject.Views
@@ -14,6 +16,7 @@ namespace UniProject.Views
         public LoginPage()
         {
             InitializeComponent();
+            string untest = TextUsername.Text;
         }
 
         //Prevents Android users from using the (hardware) back button.
@@ -25,8 +28,12 @@ namespace UniProject.Views
         //Button Action: Login the user if information is correct, taking them to SearchPage.
         private void LoginButtonClicked(object sender, EventArgs e)
         {
-            //Temporary until we can pass information to and from database
-            //to validate if the user's credentials exist/is correct
+            string sql = "SELECT COUNT(*) FROM user WHERE username = @1", untest;
+            var test2 = DbConn2.QueryScalar(sql);
+            if ((int) test2 > 0)
+            {
+                
+            }
             if (TextUsername.Text == "Admin" && TextPassword.Text == "123")
             {
                 //We need to find a way to change the MainPage such that the user can't login, hit 
