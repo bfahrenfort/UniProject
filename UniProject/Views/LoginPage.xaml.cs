@@ -6,6 +6,7 @@ using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using UniProject.Utils;
+using UniProject.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 namespace UniProject.Views
@@ -28,7 +29,7 @@ namespace UniProject.Views
         private void LoginButtonClicked(object sender, EventArgs e)
         {
             
-            var usernameExists = DbConn2.QueryScalar("SELECT * FROM user WHERE Username = @1", TextUsername.Text);
+            var usernameExists = DbConn2.QueryScalar("SELECT * FROM user WHERE Username = @1 AND Password = @2", TextUsername.Text, TextPassword.Text);
             
             //Checks if there is any result for the entered Username.
             if (usernameExists == null)
@@ -38,10 +39,10 @@ namespace UniProject.Views
             }
             
             //If it finds a matching result, it will pop-up with an alert with the return value (should be a 1).
-            else //(int) usernameExists == 1
+            else //at least 1 result
             {
-                //Navigation.PopModalAsync(); //Takes you to SearchPage; Adds SearchPage to stack.
-                DisplayAlert("Success!", "Returned: " + (int) usernameExists, "Let's Go!!!"); 
+                Console.WriteLine("Success! " + (int)usernameExists +" is the user id");
+                Navigation.PopModalAsync(); //Takes you to SearchPage; Adds SearchPage to stack.
             }
            
             //You COULD further test this by adding an else if that says "else if ((int) usernameExists == 1)" and an
