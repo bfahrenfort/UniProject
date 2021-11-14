@@ -28,35 +28,34 @@ namespace UniProject.Views
         //Button Action: Login the user if information is correct, taking them to SearchPage.
         private void LoginButtonClicked(object sender, EventArgs e)
         {
+            //Query for the input user credentials used to login the user.
+            var credentialsExists = DbConn2.QueryScalar("SELECT UserID FROM user WHERE Username = @1  AND Password = @2", TextUsername.Text, TextPassword.Text);
             
-            var usernameExists = DbConn2.QueryScalar("SELECT * FROM user WHERE Username = @1 AND Password = @2", TextUsername.Text, TextPassword.Text);
+            //var credentialsExists = DbConn2.QueryScalar("SELECT Username FROM user WHERE Username = @1", TextUsername.Text);
+
             
-            //Checks if there is any result for the entered Username.
-            if (usernameExists == null)
+            //Checks if there is any result for the entered Username and Password.
+            if (credentialsExists == null)
             {
                 //Displays an error if login information is incorrect/doesn't exist.
-                DisplayAlert("Error!",   "Username or Password is incorrect or doesn't exist." , "Ok");
+                DisplayAlert("Error!",   "Username or Password is incorrect or doesn't exist.", "Ok");
             }
             
-            //If it finds a matching result, it will pop-up with an alert with the return value (should be a 1).
-            else //at least 1 result
+            //If it finds a matching result, takes the user to the search page.
+            else
             {
-                Console.WriteLine("Success! " + (int)usernameExists +" is the user id");
-                Navigation.PopModalAsync(); //Takes you to SearchPage; Adds SearchPage to stack.
+                //DisplayAlert("Nice!",   "Username: " + credentialsExists, "Ok");
+                Navigation.PopModalAsync();
             }
-           
-            //You COULD further test this by adding an else if that says "else if ((int) usernameExists == 1)" and an
-            //else statement with some sort of error/exception.
-            
         }
         
-        //Button Action: Take them to the Forgot Password Page if they forgot their password.
+        //Button Action: Take the user to the Forgot Password Page if they forgot their password.
         private void ForgotPasswordButtonTapped(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new ForgotPasswordPage());
         }
         
-        //Button Action: Take them to registration page if they don't have an account.
+        //Button Action: Take the user to registration page if they don't have an account.
         private void RegisterButtonTapped(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new RegistrationPage());
