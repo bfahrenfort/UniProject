@@ -52,23 +52,25 @@
                 <DataTemplate>
                     <!--Bound to the Name property of each school in the list.-->
                     <ViewCell>
-                        <!-- footer of page-->
+                        <!--Footer of page-->
                         <StackLayout>
                             <Grid>
-                                <!--defines sizes of each colum within a row-->
+                                <!--defines sizes of each column within a row-->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <!--left side of each row, used to display university name-->
-                                <Label Grid.Column="0"
-                                       Text ="{Binding SchoolName}"
-                                       HorizontalOptions="StartAndExpand"
-                                       VerticalOptions="Center"
-                                       TextColor="DarkGoldenrod"
-                                       FontSize="22"
-                                       Padding="0,15,0,15"
-                                />
+                                <!--Left side of each row, used to display university name-->
+                                <Label>
+                                    Text="{Binding SchoolName}"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="Center"
+                                    TextColor="DarkGoldenrod"
+                                    FontSize="Small"
+                                    BackgroundColor="White"
+                                    Padding="0,15,0,15"
+                                    
+                                </Label>
                                 <!-- right side of each row, used as button-->
                                 <Button Grid.Column="1"
                                        Text = "Save"
@@ -76,8 +78,7 @@
                                        VerticalOptions="Center"
                                        TextColor="Black"
                                        BackgroundColor="LawnGreen"
-
-                                       FontSize="20"
+                                       FontSize="Medium"
                                        Padding="0,15,0,15"
                                 />
                             </Grid>

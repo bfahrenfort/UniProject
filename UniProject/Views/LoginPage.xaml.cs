@@ -45,6 +45,7 @@ namespace UniProject.Views
             else
             {
                 //DisplayAlert("Nice!",   "Username: " + credentialsExists, "Ok");
+                Utilities.UserID = (int) credentialsExists;
                 Navigation.PopModalAsync();
             }
         }
