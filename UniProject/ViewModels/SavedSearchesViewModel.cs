@@ -33,8 +33,9 @@ namespace UniProject.ViewModels
         {
             SavedSearches = new ObservableCollection<SchoolModel>();
             //returns from database buildings from selected school
-            DataTable test2 = DbConn.query("select * from School"); 
-            SavedSearches = new ObservableCollection<SchoolModel>(test2.Select().ToList().Select(r =>
+            DataTable savedsearchreturn = DbConn2.Query("select SavedSchool from savedsearches where UserId = @1", 7);
+            DataTable schoolreturn = DbConn.query("select * from school where SchoolName = @1", savedsearchreturn);
+            SavedSearches = new ObservableCollection<SchoolModel>(schoolreturn.Select().ToList().Select(r =>
                 new SchoolModel(r["SchoolName"] as string,
                     r["SchoolAddress"] as string,
                     r["ApplicationURL"] as string,
