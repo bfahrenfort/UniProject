@@ -39,7 +39,7 @@ namespace UniProject.ViewModels
         public ICommand Search => new Command<string>((query) =>
         {
             //query to return schools based on a string in the search 
-            DataTable schoolreturn = DbConn.query(TextSearchQuery, '%' + query + '%');
+            DataTable schoolreturn = DbConn.Query(TextSearchQuery, '%' + query + '%');
             Schools = new ObservableCollection<SchoolModel>(schoolreturn.Select().ToList().Select(r =>
                 new SchoolModel(r["SchoolName"] as string, 
                            r["SchoolAddress"] as string, 

@@ -60,7 +60,7 @@ namespace UniProject.ViewModels
             
             _building = b;
             //query to return all locations from selected building
-            DataTable locationreturn = DbConn.query("select * from location where BuildingName = @1", b.BuildingName);
+            DataTable locationreturn = DbConn.Query("select * from location where BuildingName = @1", b.BuildingName);
             LocationsInBuildings = new ObservableCollection<LocationsInBuildingsModel>(locationreturn.Select().ToList().Select(r =>
                 new LocationsInBuildingsModel(r["LocationCol"] as string,
                     r["LocationName"] as string,

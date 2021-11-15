@@ -39,7 +39,7 @@ namespace UniProject.Utils
             return dt;
         }
 
-        public static object Addquery(string query, params object[] args)
+        public static object AddQuery(string query, params object[] args)
         {
             int count = 1;
             // Create command

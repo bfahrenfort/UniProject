@@ -9,7 +9,7 @@ namespace UniProject.Utils
         // Format your base query string with @1, @2, etc standing in for each parameter.
         // Pass that and what you want to replace each stand-in with, in order. 
         // See SchoolViewModel.cs for a sample usage.
-        public static DataTable query(string query, params object[] args)
+        public static DataTable Query(string query, params object[] args)
         {
             DataTable dt = new DataTable();
             int count = 1;
