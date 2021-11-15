@@ -6,7 +6,7 @@
     
     
     <!-- header of page-->
-    <StackLayout>
+    <StackLayout Spacing="0">
         <!-- image of building-->
         <Image Source = "{Binding ImageUrlFormatted}"
                Aspect="Fill"/>
@@ -17,14 +17,14 @@
                VerticalOptions="FillAndExpand" 
                TextColor="DarkGray"
                HorizontalTextAlignment="Center"
-               FontSize="35"
+               FontSize="Large"
                Padding="0,20"
                FontAttributes="Bold"/>
         <!-- address of building-->
         <Label Text="{Binding BuildingAddressFormatted}"
                HorizontalOptions="Center"
                VerticalOptions="StartAndExpand" 
-               FontSize="25"
+               FontSize="Medium"
                TextColor="DarkGray"
                Padding="0,0,0,30"/>
         <!-- line dividing header and footer-->
@@ -33,13 +33,13 @@
               Y1 = "0"
               Y2 = "0"
               Stroke="DarkGray"
-              StrokeThickness="4"
-        />
+              StrokeThickness="4"/>
         
         <ListView x:Name="LocationList"
                   ItemsSource="{Binding LocationsInBuildings}"
                   HasUnevenRows="True"
-                  RowHeight="50">
+                  SeparatorVisibility="Default"
+                  SeparatorColor="White">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell IsEnabled="False">
@@ -57,18 +57,18 @@
                                        HorizontalOptions="StartAndExpand"
                                        VerticalOptions="Center"
                                        TextColor="DarkGoldenrod"
-                                       FontSize="22"
-                                    Padding="0,15,0,15"
-                                />
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    Padding="0,15,0,15"/>
                                 <!-- right column, displays room number of location in building-->
                                 <Label Grid.Column="1"
                                        Text = "{Binding LocationAddress}"
                                        HorizontalOptions="End"
                                        VerticalOptions="Center"
                                        TextColor="DarkOrange"
-                                       FontSize="20"
-                                       Padding="0,15,0,15"
-                                />
+                                       FontSize="Medium"
+                                       FontAttributes="Bold"
+                                       Padding="0,15,0,15"/>
                             </Grid>
                         <!--line seperating rows--> 
                         <Line X1="-1000"
@@ -76,8 +76,7 @@
                               Y1 = "0"
                               Y2 = "0"
                               Stroke="Gray"
-                              StrokeThickness="3"
-                        />
+                              StrokeThickness="3"/>
                         </StackLayout>
                     </ViewCell>
 

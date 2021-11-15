@@ -19,14 +19,14 @@ namespace UniProject.Views
         public SearchPage()
         {
             InitializeComponent();
-            //Navigation.PushModalAsync(new LoginPage());
+            Navigation.PushModalAsync(new LoginPage());
         }
 
         async void SchoolClicked(object sender, EventArgs e)
         {
             //Whenever an item is selected, that item is assigned to the SchoolViewModel's Selected property
             //Get a reference to that item and pass it to the BuildingPage we push on the nav stack
-            SchoolModel s = (((ListView) sender).BindingContext as SchoolViewModel).Selected;
+            SchoolModel s = ((SchoolViewModel) ((ListView) sender).BindingContext).Selected;
             await Navigation.PushAsync(new BuildingPage(s));
         }
 

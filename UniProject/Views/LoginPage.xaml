@@ -17,12 +17,12 @@
                 
                 <!-- Application Logo-->
                 <Image Source = "https://i.ibb.co/0QHkWg2/Uni-Tour-Logo.png"/>
-                
+
                 <!--Username Textbox-->
                 <Frame BackgroundColor="Transparent" BorderColor="White" Padding="0" Margin="0" CornerRadius="50" HorizontalOptions="FillAndExpand">
                     <StackLayout Orientation="Horizontal">
                         <Frame BackgroundColor="#20C073" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7, 7 ,0 ,7" HorizontalOptions="Start">
-                            <Image Source = "https://i.ibb.co/SRgK9g1/profile-icon.jpg" BackgroundColor="Transparent"/>
+                            <Image Source = "https://i.ibb.co/4FMjV8H/Profile-Icon-Dark-Mode.png" BackgroundColor="Transparent"/>
                         </Frame>
                         
                         <Entry x:Name="TextUsername" Placeholder="Username" PlaceholderColor="Gray" TextColor="White" HorizontalOptions="FillAndExpand" Margin="0, 0, 15, 0"/> 
@@ -33,7 +33,7 @@
                 <Frame BackgroundColor="Transparent" BorderColor="White" Padding="0" Margin="0" CornerRadius="50" HorizontalOptions="FillAndExpand">
                     <StackLayout Orientation="Horizontal">
                         <Frame BackgroundColor="#20C073" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7, 7 ,0 ,7" HorizontalOptions="Start">
-                            <Image Source = "https://i.ibb.co/yXLCSjm/Password-Pic.png"/>
+                            <Image Source = "https://i.ibb.co/PzqMZmt/Password-Icon-Dark-Mode.png"/>
                         </Frame>
                         
                         <Entry x:Name="TextPassword" IsPassword="True" Placeholder="Password" PlaceholderColor="Gray" TextColor="White" MaxLength="20" HorizontalOptions="FillAndExpand" Margin="0, 0, 15, 0"/> 

@@ -12,38 +12,42 @@
     <ContentPage.BindingContext>
         <viewModels:SchoolViewModel ></viewModels:SchoolViewModel>
     </ContentPage.BindingContext>
-
+    
     <StackLayout Spacing="0">
         <StackLayout Orientation="Horizontal">
             <!--Settings Button-->
             <ImageButton
                 HorizontalOptions="Start"
                 VerticalOptions="Center"
-                BackgroundColor="DarkOrange"
-                CornerRadius="50"
+                Source="https://i.ibb.co/xsBwTrS/Settings-Icon-Dark-Mode.png"
+                BackgroundColor="Transparent"
                 HeightRequest="50"
                 WidthRequest="50"
                 Margin="10,0,0,0"/>
             
+            <!-- Favorite Unselected (Dark): "https://i.ibb.co/FhBZNjr/Favorite-Unselected-Icon-Dark-Mode.png"-->
+            <!-- Favorite Unselected (Light): "https://i.ibb.co/94zpHLv/Favorite-Unselected-Icon-Light-Mode.png"-->
+            <!-- Favorite Selected: "https://i.ibb.co/0M5J0Sb/Favorite-Selected-Icon.png" alt="Favorite-Selected-Icon"-->
+            <!-- Favorite SavedSearchButton: "https://i.ibb.co/hZKH2kG/Saved-Search-Navigation-Icon.png"-->
+            
             <!-- Default label -->
-            <Label Text="Search" 
+            <Label Text="Search for a University" 
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"
                    TextColor="DarkGray"
-                   FontSize="Title"
+                   FontSize="Large"
                    Padding="0,20,0,20 "/> 
             
             <!-- Button that navigates to the Saved Searches Page -->
-            <Button Text="S"
-                    FontSize="Small"
-                    Clicked = "NavigateToSavedSearchButton" 
-                    HorizontalOptions="End"
-                    VerticalOptions="Center"
-                    BackgroundColor="DarkOrange"
-                    CornerRadius="50"
-                    HeightRequest="50"
-                    WidthRequest="50"
-                    Margin="0,0,10,0"/>  
+            <ImageButton
+                Clicked = "NavigateToSavedSearchButton" 
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                Source="https://i.ibb.co/hZKH2kG/Saved-Search-Navigation-Icon.png"
+                BackgroundColor="Transparent"
+                HeightRequest="50"
+                WidthRequest="50"
+                Margin="0,0,10,0"/>  
         </StackLayout>
         
         <!-- ListView, bound to the Schools list from the SchoolViewModel from the binding context-->
@@ -58,7 +62,7 @@
         <ListView x:Name="SchoolsList"
                   ItemsSource="{Binding Schools}"
                   SelectionMode="Single"
-                  ItemSelected="SchoolClicked"
+                  ItemTapped="SchoolClicked"
                   SelectedItem="{Binding Selected}"
                   VerticalScrollBarVisibility="Always"
                   RowHeight="60"
@@ -79,7 +83,8 @@
                                     WidthRequest="30"
                                     HorizontalOptions="StartAndExpand"
                                     VerticalOptions="CenterAndExpand"
-                                    BackgroundColor="LawnGreen"
+                                    Source="https://i.ibb.co/FhBZNjr/Favorite-Unselected-Icon-Dark-Mode.png"
+                                    BackgroundColor="Transparent"
                                     Margin="15, 15"/>
                                 
                                 <Label

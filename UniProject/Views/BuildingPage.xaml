@@ -9,7 +9,7 @@
         for instance if you wish to have a ListView bound to a BuildingViewModel but also require another binding
         context somewhere else-->
 
-    <StackLayout>
+    <StackLayout Spacing="0">
         <!--header of page-->
         <!--Importing the school name so that it can be stylized appropriately-->
         <Label Text="{Binding SchoolNameFormatted}"
@@ -64,9 +64,12 @@
         <ListView x:Name="BuildingList"
                   ItemsSource="{Binding Buildings}"
                   SelectionMode="Single"
-                  ItemSelected="BuildingClicked"
+                  ItemTapped="BuildingClicked"
                   SelectedItem="{Binding Selected}"
-                  RowHeight="70"
+                  VerticalScrollBarVisibility="Always"
+                  RowHeight="60"
+                  SeparatorVisibility="Default"
+                  SeparatorColor="White"
                   HorizontalOptions="Center">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -78,17 +81,11 @@
                                HorizontalOptions="StartAndExpand"
                                VerticalOptions="Center"
                                TextColor="DarkGoldenrod"
-                               FontSize="22"
+                               FontSize="Medium"
+                               FontAttributes="Bold"
                                VerticalTextAlignment="Center"
                                Padding="0,15,0,15"
                                MaxLines="2"/>
-                        <!-- line dividing rows-->
-                        <Line X1="-1000"
-                              X2="1000"
-                              Y1 = "0"
-                              Y2 = "0"
-                              Stroke="Gray"
-                              StrokeThickness="3"/>
                         </StackLayout>
                         
                     </ViewCell>
