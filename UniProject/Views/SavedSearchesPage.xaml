@@ -59,6 +59,7 @@
                                 <!-- right side of each row, used as button-->
                                 <Button Grid.Column="1"
                                        Text = "Delete"
+                                       Clicked="SchoolDeleteButton"
                                        HorizontalOptions="End"
                                        VerticalOptions="Center"
                                        TextColor="Black"

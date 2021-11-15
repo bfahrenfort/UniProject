@@ -42,6 +42,8 @@ namespace UniProject.ViewModels
                     r["SchoolAcronym"] as string)));
 
         }
+        
+        
         public event PropertyChangedEventHandler PropertyChanged;
         
         [NotifyPropertyChangedInvocator]
