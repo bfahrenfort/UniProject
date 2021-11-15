@@ -43,7 +43,7 @@ namespace UniProject.Views
             }
             else
             {
-                    var savesearch = DbConn.query("INSERT INTO savedsearches (UserId, SavedSchool) Values (@1, @2)", Utilities.UserID, schoolname);
+                    var savesearch = DbConn.Query("INSERT INTO savedsearches (UserId, SavedSchool) Values (@1, @2)", Utilities.UserID, schoolname);
             }
         }
         private async void NavigateToSavedSearchButton(object sender, EventArgs e)
