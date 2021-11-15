@@ -36,13 +36,14 @@ namespace UniProject.Views
             var schoolname = s.SchoolName;
             //checks if school is already saved
             var saveExists = DbConn.QueryScalar("SELECT * FROM savedsearches WHERE UserId = @1 And SavedSchool = @2", Utilities.UserID, schoolname);
-            Console.WriteLine(saveExists);
             if (saveExists != null)
             {
-                await DisplayAlert("Error!", "already saved", "okay");
+                //school exists. DO NOT REPEAT SAVE
             }
             else
             {
+                //save does not exist, add new saved school
+                await DisplayAlert("Successful!", "Saved", "Close");
                     var savesearch = DbConn.Query("INSERT INTO savedsearches (UserId, SavedSchool) Values (@1, @2)", Utilities.UserID, schoolname);
             }
         }
