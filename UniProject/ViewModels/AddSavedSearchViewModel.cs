@@ -15,8 +15,8 @@ namespace UniProject.ViewModels
 {
     public class AddSavedSearchViewModel: INotifyPropertyChanged
     {
-        private SchoolModel _school;
-        public SchoolModel School
+        private SchoolModel _school; //schools returned for saved searches
+        public SchoolModel School 
         {
             get => _school;
             set
@@ -41,7 +41,7 @@ namespace UniProject.ViewModels
             _school = s;
             _user = u;
             //returns from database buildings from selected school
-            DataTable test2 = DbConn2.Query("INSERT INTO savedsearches (UserId, SavedSchool) Values (@1, @2)", _user.UserId,_school.SchoolName);
+            DataTable savedsearchreturn = DbConn2.Query("INSERT INTO savedsearches (UserId, SavedSchool) Values (@1, @2)", _user.UserId,_school.SchoolName);
             
         }
         public event PropertyChangedEventHandler PropertyChanged;

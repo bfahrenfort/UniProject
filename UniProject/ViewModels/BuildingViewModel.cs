@@ -48,8 +48,8 @@ namespace UniProject.ViewModels
         {
             _school = s;
             //returns from database buildings from selected school
-            DataTable test2 = DbConn.query("select * from building where SchoolName = @1", _school.SchoolName); 
-            Buildings = new ObservableCollection<BuildingModel>(test2.Select().ToList().Select(r =>
+            DataTable buildingreturn = DbConn.query("select * from building where SchoolName = @1", _school.SchoolName); 
+            Buildings = new ObservableCollection<BuildingModel>(buildingreturn.Select().ToList().Select(r =>
                 new BuildingModel(r["BuildingName"] as string,
                     r["BuildingAddress"] as string,
                     r["PictureUrl"] as string,

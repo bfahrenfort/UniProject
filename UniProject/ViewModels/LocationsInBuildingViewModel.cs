@@ -19,7 +19,7 @@ namespace UniProject.ViewModels
         private BuildingModel building;
         private ObservableCollection<LocationsInBuildingsModel> _locations;
         private LocationsInBuildingsModel locationbinding;
-        private BuildingModel _building;
+        private BuildingModel _building; //the building which locations are returned from
         public BuildingModel Building
         {
             get => _building;
@@ -57,11 +57,11 @@ namespace UniProject.ViewModels
         public string RoomNumFormatted => $"{locationbinding.LocationAddress}";
         public LocationsInBuildingViewModel(BuildingModel b)
         {
-            //needs to display building name at top
-            //queries to display 
+            
             _building = b;
-            DataTable test1 = DbConn.query("select * from location where BuildingName = @1", b.BuildingName); //not tested
-            LocationsInBuildings = new ObservableCollection<LocationsInBuildingsModel>(test1.Select().ToList().Select(r =>
+            //query to return all locations from selected building
+            DataTable locationreturn = DbConn.query("select * from location where BuildingName = @1", b.BuildingName);
+            LocationsInBuildings = new ObservableCollection<LocationsInBuildingsModel>(locationreturn.Select().ToList().Select(r =>
                 new LocationsInBuildingsModel(r["LocationCol"] as string,
                     r["LocationName"] as string,
                     r["BuildingName"] as string,

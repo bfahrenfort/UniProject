@@ -18,10 +18,10 @@ namespace UniProject.ViewModels
         private UserModel user;
 
         
-        // Default constructor
+
         public UserViewModel(UserModel u)
         {
-            //Not needed yet;
+            //Not needed yet;i
             //DataTable test2 = DbConn.query("select * from building where Username = @1", u.Username);
         }
    

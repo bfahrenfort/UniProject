@@ -35,12 +35,12 @@ namespace UniProject.ViewModels
             Schools = new ObservableCollection<SchoolModel>();
         }
         
-        // Yes, this is technically a functional interface field, but it behaves like a method, so here it is.
+
         public ICommand Search => new Command<string>((query) =>
         {
-            DataTable dt = DbConn.query(TextSearchQuery, '%' + query + '%');
-            // Don't touch my GARBAGE!!!
-            Schools = new ObservableCollection<SchoolModel>(dt.Select().ToList().Select(r =>
+            //query to return schools based on a string in the search 
+            DataTable schoolreturn = DbConn.query(TextSearchQuery, '%' + query + '%');
+            Schools = new ObservableCollection<SchoolModel>(schoolreturn.Select().ToList().Select(r =>
                 new SchoolModel(r["SchoolName"] as string, 
                            r["SchoolAddress"] as string, 
                            r["ApplicationURL"] as string, 
