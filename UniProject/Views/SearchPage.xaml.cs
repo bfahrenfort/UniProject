@@ -30,21 +30,24 @@ namespace UniProject.Views
             await Navigation.PushAsync(new BuildingPage(s));
         }
 
-        async void saveclicked(object sender, EventArgs e) //saves selected school
+        async void SaveClicked(object sender, EventArgs e) //saves selected school
         {
             SchoolModel s = ((SchoolModel) ((ImageButton) sender).BindingContext);
-            var schoolname = s.SchoolName;
-            //checks if school is already saved
-            var saveExists = DbConn.QueryScalar("SELECT * FROM savedsearches WHERE UserId = @1 And SavedSchool = @2", Utilities.UserID, schoolname);
-            if (saveExists != null)
+            var schoolName = s.SchoolName;
+            //Checks if the school is already saved.
+            var saveExists = DbConn.QueryScalar("SELECT * FROM savedsearches WHERE UserId = @1 And SavedSchool = @2", Utilities.UserID, schoolName);
+
+            //If the school isn't favorited, favorites the school.
+            if (saveExists == null)
             {
-                //school exists. DO NOT REPEAT SAVE
+                await DisplayAlert("Saved!", "The university has been saved to your Saved Searches", "Ok");
+                DbConn.Query("INSERT INTO savedsearches (UserId, SavedSchool) Values (@1, @2)", Utilities.UserID, schoolName);
             }
+            //If the school is already favorited, un-favorites the school.
             else
             {
-                //save does not exist, add new saved school
-                await DisplayAlert("Successful!", "Saved", "Close");
-                    var savesearch = DbConn.Query("INSERT INTO savedsearches (UserId, SavedSchool) Values (@1, @2)", Utilities.UserID, schoolname);
+                await DisplayAlert("Deleted", "The university has been removed from your Saved Searches", "Ok");
+                DbConn.Query("DELETE FROM savedsearches WHERE UserId = @1 AND SavedSchool = @2", Utilities.UserID, schoolName);
             }
         }
         private async void NavigateToSavedSearchButton(object sender, EventArgs e)

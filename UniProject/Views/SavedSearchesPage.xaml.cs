@@ -29,22 +29,14 @@ namespace UniProject.Views
             await Navigation.PushAsync(new BuildingPage(s), true);
         }
 
+        //Deletes the favorited university (Button is on the saved searches page)
         async void SchoolDeleteButton(object sender, EventArgs e)
         {
             SchoolModel s = ((SchoolModel) ((Button) sender).BindingContext);
-            var schoolname = s.SchoolName;
-            //checks if school is already saved
-            var saveExists = DbConn.QueryScalar("SELECT * FROM savedsearches WHERE UserId = @1 And SavedSchool = @2", Utilities.UserID, schoolname);
-            if (saveExists != null)
-            {
-                await DisplayAlert("Successful!", "Deleted", "Close");
-                var savesearch = DbConn.Query("DELETE FROM savedsearches WHERE UserId = @1 AND SavedSchool = @2", Utilities.UserID, schoolname);
-
-            }
-            else
-            {
-                //no longer in saved table, Null return
-            }
+            String schoolname = s.SchoolName;
+            //Remove the line below this at a later date.
+            await DisplayAlert("Success!", "The university was removed from your saved searches.", "Close");
+            DbConn.Query("DELETE FROM savedsearches WHERE UserId = @1 AND SavedSchool = @2", Utilities.UserID, schoolname);
         }
     }
 }
