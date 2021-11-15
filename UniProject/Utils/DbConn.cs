@@ -51,10 +51,10 @@ namespace UniProject.Utils
             }
             
             // Connect to database and execute command
-            using (var dbConn1 = new MySqlConnection(Utilities.UserConnString))
+            using (var dbConn = new MySqlConnection(Utilities.UniConnString))
             {
-                dbConn1.Open();
-                cmd.Connection = dbConn1;
+                dbConn.Open();
+                cmd.Connection = dbConn;
                 var result = cmd.ExecuteScalar();
                 return result;
             }
