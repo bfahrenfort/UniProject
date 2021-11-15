@@ -44,7 +44,7 @@ namespace UniProject.Views
             //If it finds a matching result, takes the user to the search page.
             else
             {
-                //DisplayAlert("Nice!",   "Username: " + credentialsExists, "Ok");
+                
                 Utilities.UserID = (int) credentialsExists;
                 Navigation.PopModalAsync();
             }

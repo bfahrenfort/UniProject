@@ -37,5 +37,27 @@ namespace UniProject.Utils
 
             return dt;
         }
+        public static object QueryScalar(string query, params object[] args)
+        {
+            int count = 1;
+            
+            // Create command
+            var cmd = new MySqlCommand();
+            cmd.CommandText = query;
+            foreach(object item in args)
+            {
+                cmd.Parameters.AddWithValue("@" + count, item); // To mitigate the risk of SQL injection
+                count++;
+            }
+            
+            // Connect to database and execute command
+            using (var dbConn1 = new MySqlConnection(Utilities.UserConnString))
+            {
+                dbConn1.Open();
+                cmd.Connection = dbConn1;
+                var result = cmd.ExecuteScalar();
+                return result;
+            }
+        }
     }
 }

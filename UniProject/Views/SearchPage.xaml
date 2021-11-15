@@ -84,6 +84,7 @@
                                     HorizontalOptions="StartAndExpand"
                                     VerticalOptions="CenterAndExpand"
                                     Source="https://i.ibb.co/FhBZNjr/Favorite-Unselected-Icon-Dark-Mode.png"
+                                    Clicked="saveclicked"
                                     BackgroundColor="Transparent"
                                     Margin="15, 15"/>
                                 

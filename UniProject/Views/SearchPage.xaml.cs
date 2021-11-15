@@ -30,6 +30,22 @@ namespace UniProject.Views
             await Navigation.PushAsync(new BuildingPage(s));
         }
 
+        async void saveclicked(object sender, EventArgs e) //saves selected school
+        {
+            SchoolModel s = ((SchoolModel) ((ImageButton) sender).BindingContext);
+            var schoolname = s.SchoolName;
+            //checks if school is already saved
+            var saveExists = DbConn.QueryScalar("SELECT * FROM savedsearches WHERE UserId = @1 And SavedSchool = @2", Utilities.UserID, schoolname);
+            Console.WriteLine(saveExists);
+            if (saveExists != null)
+            {
+                await DisplayAlert("Error!", "already saved", "okay");
+            }
+            else
+            {
+                    var savesearch = DbConn.query("INSERT INTO savedsearches (UserId, SavedSchool) Values (@1, @2)", Utilities.UserID, schoolname);
+            }
+        }
         private async void NavigateToSavedSearchButton(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SavedSearchesPage());
