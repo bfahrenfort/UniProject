@@ -8,7 +8,7 @@
     
     <ContentPage>
         <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand">
-            <Label Text="Swipe left for second school"
+            <Label Text="Swipe right for second school"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" 
                    TextColor="LightGoldenrodYellow"/>
@@ -17,7 +17,7 @@
     </ContentPage>
     <ContentPage>
         <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand">
-            <Label Text="Swipe right for first school"
+            <Label Text="Swipe left for first school"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"
                    TextColor="LightGoldenrodYellow"/>
