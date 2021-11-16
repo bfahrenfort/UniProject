@@ -43,7 +43,7 @@ namespace UniProject.ViewModels
 
         }
         
-        
+
         public event PropertyChangedEventHandler PropertyChanged;
         
         [NotifyPropertyChangedInvocator]

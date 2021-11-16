@@ -21,7 +21,7 @@
                 <!--Username Textbox-->
                 <Frame BackgroundColor="Transparent" BorderColor="White" Padding="0" Margin="0" CornerRadius="50" HorizontalOptions="FillAndExpand">
                     <StackLayout Orientation="Horizontal">
-                        <Frame BackgroundColor="#20C073" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7, 7 ,0 ,7" HorizontalOptions="Start">
+                        <Frame BackgroundColor="#BB86FC" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7, 7 ,0 ,7" HorizontalOptions="Start">
                             <Image Source = "https://i.ibb.co/4FMjV8H/Profile-Icon-Dark-Mode.png" BackgroundColor="Transparent"/>
                         </Frame>
                         
@@ -32,7 +32,7 @@
                 <!--Password Textbox-->
                 <Frame BackgroundColor="Transparent" BorderColor="White" Padding="0" Margin="0" CornerRadius="50" HorizontalOptions="FillAndExpand">
                     <StackLayout Orientation="Horizontal">
-                        <Frame BackgroundColor="#20C073" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7, 7 ,0 ,7" HorizontalOptions="Start">
+                        <Frame BackgroundColor="#BB86FC" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7, 7 ,0 ,7" HorizontalOptions="Start">
                             <Image Source = "https://i.ibb.co/PzqMZmt/Password-Icon-Dark-Mode.png"/>
                         </Frame>
                         
@@ -44,7 +44,6 @@
                 <StackLayout Orientation="Horizontal">
                     <CheckBox IsChecked="False" Color="#20C073"/>
                     <Label Text="Remember me" TextColor="White" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                    
                     <Label Text="Forgot Password" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="ForgotPasswordButtonTapped"/>

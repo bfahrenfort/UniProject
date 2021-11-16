@@ -15,17 +15,17 @@
                MaxLines="2"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="FillAndExpand" 
-               TextColor="DarkGray"
+               TextColor="#BB86FC"
                HorizontalTextAlignment="Center"
-               FontSize="Large"
+               FontSize="Title"
                Padding="0,20"
                FontAttributes="Bold"/>
         <!-- address of building-->
         <Label Text="{Binding BuildingAddressFormatted}"
                HorizontalOptions="Center"
                VerticalOptions="StartAndExpand" 
-               FontSize="Medium"
-               TextColor="DarkGray"
+               FontSize="Large"
+               TextColor="LightGoldenrodYellow"
                Padding="0,0,0,30"/>
         <!-- line dividing header and footer-->
         <Line X1 = "-1000"
@@ -56,7 +56,7 @@
                                     Text ="{Binding LocationName}"
                                        HorizontalOptions="StartAndExpand"
                                        VerticalOptions="Center"
-                                       TextColor="DarkGoldenrod"
+                                       TextColor="WhiteSmoke"
                                     FontSize="Medium"
                                     FontAttributes="Bold"
                                     Padding="0,15,0,15"/>
@@ -65,7 +65,7 @@
                                        Text = "{Binding LocationAddress}"
                                        HorizontalOptions="End"
                                        VerticalOptions="Center"
-                                       TextColor="DarkOrange"
+                                       TextColor="#03DAC6"
                                        FontSize="Medium"
                                        FontAttributes="Bold"
                                        Padding="0,15,0,15"/>

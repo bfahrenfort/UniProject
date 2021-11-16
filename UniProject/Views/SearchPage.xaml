@@ -25,17 +25,13 @@
                 WidthRequest="50"
                 Margin="10,0,0,0"/>
             
-            <!-- Favorite Unselected (Dark): "https://i.ibb.co/FhBZNjr/Favorite-Unselected-Icon-Dark-Mode.png"-->
-            <!-- Favorite Unselected (Light): "https://i.ibb.co/94zpHLv/Favorite-Unselected-Icon-Light-Mode.png"-->
-            <!-- Favorite Selected: "https://i.ibb.co/0M5J0Sb/Favorite-Selected-Icon.png" alt="Favorite-Selected-Icon"-->
-            <!-- Favorite SavedSearchButton: "https://i.ibb.co/hZKH2kG/Saved-Search-Navigation-Icon.png"-->
-            
             <!-- Default label -->
             <Label Text="Search for a University" 
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"
-                   TextColor="DarkGray"
-                   FontSize="Large"
+                   TextColor="#BB86FC"
+                   FontSize="Title"
+                   FontAttributes="Bold"
                    Padding="0,20,0,20 "/> 
             
             <!-- Button that navigates to the Saved Searches Page -->
@@ -55,10 +51,35 @@
                    SearchCommand="{Binding Search}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
                    BackgroundColor="White"/>
-
+       
+       <!-- labels for table-->
         <StackLayout>
-            
-        </StackLayout>       
+            <Grid>
+            <!--defines sizes of each column within a row-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Source="https://i.ibb.co/98sb23T/name-2.png"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Start"
+                   Margin = "0,5,20,5"
+            />
+            <Image Grid.Column="1" Source="https://i.ibb.co/v4q4Q4L/name.png"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center"
+                   Margin = "0,5,20,5"
+            />
+            </Grid>
+        </StackLayout>     
+        <!-- line dividing labels and results-->
+        <Line X1 = "-1000"
+              X2 = "1000"
+              Y1 = "0"
+              Y2 = "0"
+              Stroke="DarkGray"
+              StrokeThickness="4"/>
+        
         <ListView x:Name="SchoolsList"
                   ItemsSource="{Binding Schools}"
                   SelectionMode="Single"
@@ -68,45 +89,42 @@
                   RowHeight="60"
                   SeparatorVisibility="Default"
                   SeparatorColor="White">
-
+            
             <ListView.ItemTemplate>
-                
                 <DataTemplate>
                     <!--Bound to the Name property of each school in the list-->
                     <ViewCell>
                         <!--Footer of page-->
-                        <StackLayout>
+                        <StackLayout
+                            Padding="0,10,0,0">
                             <StackLayout Orientation="Horizontal">
-                                <!--Favorite Button-->
-                                <ImageButton
-                                    HeightRequest="30"
-                                    WidthRequest="30"
-                                    HorizontalOptions="StartAndExpand"
-                                    VerticalOptions="CenterAndExpand"
-                                    Source="https://i.ibb.co/FhBZNjr/Favorite-Unselected-Icon-Dark-Mode.png"
-                                    Clicked="SaveClicked"
-                                    BackgroundColor="Transparent"
-                                    Margin="15, 15"/>
-                                
-                                <Label
-                                    Text="{Binding SchoolName}"
-                                    HorizontalOptions="StartAndExpand"
-                                    VerticalOptions="CenterAndExpand"
-                                    FontAttributes="Bold"
-                                    TextColor="DarkGoldenrod"
-                                    FontSize="Medium"/>
+                                <Grid>
+                                    <!--defines sizes of each column within a row-->
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="70"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <!--Favorite Button-->
+                                    <CheckBox Grid.Column="0" IsChecked="False" Color="#20C073"
+                                              VerticalOptions="Center"
+                                              HorizontalOptions="Center"
+                                              CheckedChanged="SaveClicked"/>
+                                    <Label Grid.Column="1"
+                                           Text="{Binding SchoolName}"
+                                           HorizontalOptions="StartAndExpand"
+                                           VerticalOptions="Center"
+                                           FontAttributes="Bold"
+                                           TextColor="WhiteSmoke"
+                                           FontSize="Medium"
+                                           MaxLines="1"
+                                           Padding="15,0,0,0"
+/>
+                                </Grid>
                             </StackLayout>
-                            
                         </StackLayout>
-                        
                     </ViewCell>
-                    
                 </DataTemplate>
-                
             </ListView.ItemTemplate>
-            
         </ListView>
-        
     </StackLayout>
-    
 </ContentPage>

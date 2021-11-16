@@ -8,18 +8,17 @@
         It can be moved into higher or lower scopes as desired, 
         for instance if you wish to have a ListView bound to a BuildingViewModel but also require another binding
         context somewhere else-->
-
     <StackLayout Spacing="0">
         <!--header of page-->
         <!--Importing the school name so that it can be stylized appropriately-->
         <Label Text="{Binding SchoolNameFormatted}"
                MaxLines="2"
-               HorizontalOptions="CenterAndExpand"
-               VerticalOptions="Center" 
-               TextColor="DarkGray"
+               HorizontalOptions="Center"
+               VerticalOptions="Start" 
+               TextColor="#BB86FC"
                FontSize="35"
                HorizontalTextAlignment="Center"
-               Padding="0, 60,0, 10"
+               Padding="0, 30,0, 10"
                FontAttributes="Bold"/>
         <!--Importing the school address so that it can be stylized appropriately-->
         <Label Text="{Binding SchoolAddressLabel}"
@@ -29,20 +28,21 @@
                Padding="0,20,0,10"
                HorizontalTextAlignment="Center"
                FontSize="25"
-               TextColor="DarkGray"/>
+               TextColor="LightGoldenrodYellow"/>
         <!--apply now button-->
         <Frame
             CornerRadius="20"
-            BackgroundColor="DarkOrange"
+            BackgroundColor="#20C073"
             Padding="1,0 "
-            Margin="40,30">
+            Margin="60,30">
         <Label Text="Apply Now"
-               HorizontalOptions="Center"
+               HorizontalOptions="Start"
                VerticalOptions="Start"
-               TextColor="DodgerBlue"
+               TextColor="White"
                FontAttributes="Bold"
-               FontSize="25"
-               Padding="130,0,130,0 "
+               FontSize="Large"
+               MaxLines="1"
+               Padding="110,0,110,0 "
                TextDecorations="Underline">
             <!--opens default browser to application url-->
             <Label.GestureRecognizers>
@@ -51,7 +51,6 @@
             </Label.GestureRecognizers>
             </Label>
         </Frame>
-        
         <!-- line seperating header and footer-->
         <Line X1 = "-1000"
               X2 = "1000"
@@ -78,9 +77,9 @@
                         <StackLayout>
                         <!-- displays rows of buildings that belong to the selected school -->
                         <Label Text="{Binding BuildingName}"
-                               HorizontalOptions="StartAndExpand"
+                               HorizontalOptions="Center"
                                VerticalOptions="Center"
-                               TextColor="DarkGoldenrod"
+                               TextColor="WhiteSmoke"
                                FontSize="Medium"
                                FontAttributes="Bold"
                                VerticalTextAlignment="Center"
