@@ -1,6 +1,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:UniProject.ViewModels;assembly=UniProject"
+             xmlns:partials="clr-namespace:UniProject.Views.Partials;assembly=UniProject"
              x:Class="UniProject.Views.BuildingPage"
              BackgroundColor="#121212">
     
@@ -8,49 +9,20 @@
         It can be moved into higher or lower scopes as desired, 
         for instance if you wish to have a ListView bound to a BuildingViewModel but also require another binding
         context somewhere else-->
-    <StackLayout Spacing="0">
-        <!--header of page-->
-        <!--Importing the school name so that it can be stylized appropriately-->
-        <Label Text="{Binding SchoolNameFormatted}"
-               MaxLines="2"
+    <StackLayout Spacing="0" VerticalOptions="StartAndExpand">
+        <partials:SchoolInfo BindingContext="{Binding InfoVm}"/>
+        
+        <Button Text="compare..."
                HorizontalOptions="Center"
-               VerticalOptions="Start" 
-               TextColor="#BB86FC"
-               FontSize="35"
-               HorizontalTextAlignment="Center"
-               Padding="0, 30,0, 10"
-               FontAttributes="Bold"/>
-        <!--Importing the school address so that it can be stylized appropriately-->
-        <Label Text="{Binding SchoolAddressLabel}"
-               HorizontalOptions="Center"
-               VerticalOptions="Center" 
-               MaxLines="2"
-               Padding="0,20,0,10"
-               HorizontalTextAlignment="Center"
-               FontSize="25"
-               TextColor="LightGoldenrodYellow"/>
-        <!--apply now button-->
-        <Frame
-            CornerRadius="20"
-            BackgroundColor="#20C073"
-            Padding="1,0 "
-            Margin="60,30">
-        <Label Text="Apply Now"
-               HorizontalOptions="Start"
-               VerticalOptions="Start"
-               TextColor="White"
-               FontAttributes="Bold"
-               FontSize="Large"
-               MaxLines="1"
-               Padding="110,0,110,0 "
-               TextDecorations="Underline">
-            <!--opens default browser to application url-->
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}"
-                                      CommandParameter="{Binding SchoolUrlLabel}"/>
-            </Label.GestureRecognizers>
-            </Label>
-        </Frame>
+               VerticalOptions="Center"
+               TextColor="Blue"
+               Font="Default"
+               FontAttributes="Italic"
+               FontSize="Medium"
+               Clicked="CompareClicked"
+               Padding="0,0,0,20"
+               BackgroundColor="Transparent">
+        </Button>
         <!-- line seperating header and footer-->
         <Line X1 = "-1000"
               X2 = "1000"

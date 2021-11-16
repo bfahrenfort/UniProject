@@ -16,20 +16,8 @@ namespace UniProject.ViewModels
 {
     public class BuildingViewModel: INotifyPropertyChanged
     {
-        private SchoolModel _school; // The School this building list is returned from
-        public SchoolModel School
-        {
-            get => _school;
-            set
-            {
-                _school = value;
-                OnPropertyChanged(nameof(School));
-            }
-        }
-        public string SchoolNameFormatted => $"{_school.SchoolName}"; // For convenience, in accordance with MVVM
-        public string SchoolAddressLabel => $"{_school.SchoolAddress}";
-        public string SchoolUrlLabel => $"{_school.ApplicationURL}";
-    
+        public InfoViewModel InfoVm { get; set; }
+        
         private ObservableCollection<BuildingModel> _buildings;
         public ObservableCollection<BuildingModel> Buildings
         { 
@@ -40,15 +28,14 @@ namespace UniProject.ViewModels
                 OnPropertyChanged(nameof(Buildings));
             } 
         }
-        
+
         public BuildingModel Selected { get; set; } // The building in Buildings currently selected
         
-        public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
         public BuildingViewModel(SchoolModel s)
         {
-            _school = s;
+            InfoVm = new InfoViewModel(s);
             //returns from database buildings from selected school
-            DataTable buildingreturn = DbConn.Query("select * from building where SchoolName = @1", _school.SchoolName); 
+            DataTable buildingreturn = DbConn.Query("select * from building where SchoolName = @1", InfoVm.School.SchoolName); 
             Buildings = new ObservableCollection<BuildingModel>(buildingreturn.Select().ToList().Select(r =>
                 new BuildingModel(r["BuildingName"] as string,
                     r["BuildingAddress"] as string,
@@ -56,7 +43,9 @@ namespace UniProject.ViewModels
                     r["SchoolName"] as string)));
 
         }
-        
+
+        public SchoolModel SchoolFromVm => InfoVm.School;
+
         // Required definitions to update the view
         public event PropertyChangedEventHandler PropertyChanged;
         

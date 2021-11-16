@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:UniProject.ViewModels;assembly=UniProject"
+             x:Class="UniProject.Views.CompareSearchPage"
+             BackgroundColor="#121212">
+    
+    <!-- This context tells the layout that it will be working with a SchoolViewModel.
+        It can be moved into higher or lower scopes as desired, 
+        for instance if you wish to have a ListView bound to a SchoolViewModel but also require another binding
+        context somewhere else-->
+    <ContentPage.BindingContext>
+        <viewModels:SchoolViewModel ></viewModels:SchoolViewModel>
+    </ContentPage.BindingContext>
+    
+    <StackLayout Spacing="0">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Search to compare" 
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   TextColor="#BB86FC"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   Padding="0,20,0,20 "/> 
+        </StackLayout>
+        
+        <!-- ListView, bound to the Schools list from the SchoolViewModel from the binding context-->
+        <SearchBar x:Name="SearchBar"
+                   SearchCommand="{Binding Search}"
+                   SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
+                   BackgroundColor="White"/>
+       
+       <!-- labels for table-->
+        <StackLayout>
+            <Grid>
+            <!--defines sizes of each column within a row-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+            <Image Grid.Column="1" Source="https://i.ibb.co/v4q4Q4L/name.png"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center"
+                   Margin = "0,5,20,5"
+            />
+            </Grid>
+        </StackLayout>     
+        <!-- line dividing labels and results-->
+        <Line X1 = "-1000"
+              X2 = "1000"
+              Y1 = "0"
+              Y2 = "0"
+              Stroke="DarkGray"
+              StrokeThickness="4"/>
+        
+        <ListView x:Name="SchoolsList"
+                  ItemsSource="{Binding Schools}"
+                  SelectionMode="Single"
+                  ItemTapped="SchoolClicked"
+                  SelectedItem="{Binding Selected}"
+                  VerticalScrollBarVisibility="Always"
+                  RowHeight="60"
+                  SeparatorVisibility="Default"
+                  SeparatorColor="White"
+                  HorizontalOptions="Center">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <!--Bound to the Name property of each school in the list-->
+                    <TextCell Text="{Binding SchoolName}"
+                              TextColor="WhiteSmoke"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

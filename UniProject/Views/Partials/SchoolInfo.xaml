@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UniProject.Views.Partials.SchoolInfo" Spacing="0" Orientation="Vertical"
+             BackgroundColor="#121212">
+    <!--Importing the school name so that it can be stylized appropriately-->
+        <Label Text="{Binding SchoolNameFormatted}"
+               MaxLines="2"
+               HorizontalOptions="Center"
+               VerticalOptions="Start" 
+               TextColor="#BB86FC"
+               FontSize="35"
+               HorizontalTextAlignment="Center"
+               Padding="0, 30,0, 10"
+               FontAttributes="Bold"/>
+        <!--Importing the school address so that it can be stylized appropriately-->
+        <Label Text="{Binding SchoolAddressLabel}"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" 
+               MaxLines="2"
+               Padding="0,20,0,10"
+               HorizontalTextAlignment="Center"
+               FontSize="25"
+               TextColor="LightGoldenrodYellow"/>
+        <!--apply now button-->
+        <Frame
+            CornerRadius="20"
+            BackgroundColor="#20C073"
+            Padding="1,0 "
+            Margin="60,30">
+        <Label Text="Apply Now"
+               HorizontalOptions="Start"
+               VerticalOptions="Start"
+               TextColor="White"
+               FontAttributes="Bold"
+               FontSize="Large"
+               MaxLines="1"
+               Padding="110, 0,110,0"
+               TextDecorations="Underline">
+            <!--opens default browser to application url-->
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ApplyLinkCommand}"
+                                      CommandParameter="{Binding SchoolUrlLabel}"/>
+            </Label.GestureRecognizers>
+            </Label>
+        </Frame>
+</StackLayout>

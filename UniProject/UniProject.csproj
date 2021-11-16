@@ -21,6 +21,10 @@
         <SubType>Code</SubType>
       </Compile>
       <Compile Remove="ViewModels\LocationInBuildingViewModel.cs" />
+      <Compile Update="Views\Partials\SchoolInfo.xaml.cs">
+        <DependentUpon>SchoolInfo.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>

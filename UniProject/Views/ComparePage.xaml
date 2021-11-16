@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:partials="clr-namespace:UniProject.Views.Partials;assembly=UniProject"
+             x:Class="UniProject.Views.ComparePage"
+             BackgroundColor="#121212">
+    
+    <ContentPage>
+        <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand">
+            <Label Text="Swipe left for second school"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="LightGoldenrodYellow"/>
+            <partials:SchoolInfo BindingContext="{Binding S1}"/>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage>
+        <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand">
+            <Label Text="Swipe right for first school"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   TextColor="LightGoldenrodYellow"/>
+            <partials:SchoolInfo BindingContext="{Binding S2}"/>
+        </StackLayout>
+    </ContentPage>
+</CarouselPage>

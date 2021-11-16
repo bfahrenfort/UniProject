@@ -35,6 +35,10 @@ namespace UniProject.Views
             BuildingModel b = (((ListView) sender).BindingContext as BuildingViewModel).Selected;
             await Navigation.PushAsync(new LocationPage(b),true);
         }
-        
+
+        async void CompareClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CompareSearchPage(((BuildingViewModel) BindingContext).InfoVm.School));
+        }
     }
 }
