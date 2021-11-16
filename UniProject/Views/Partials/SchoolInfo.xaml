@@ -12,7 +12,7 @@
                TextColor="#BB86FC"
                FontSize="35"
                HorizontalTextAlignment="Center"
-               Padding="0, 30,0, 10"
+               Padding="0, 0,0, 10"
                FontAttributes="Bold"/>
         <!--Importing the school address so that it can be stylized appropriately-->
         <Label Text="{Binding SchoolAddressLabel}"
