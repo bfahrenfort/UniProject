@@ -34,7 +34,7 @@ namespace UniProject.ViewModels
         {
             Schools = new ObservableCollection<SchoolModel>();
         }
-        
+
         public ICommand Search => new Command<string>((query) =>
         {
             //query to return schools based on a string in the search 

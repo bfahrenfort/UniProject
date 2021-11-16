@@ -54,8 +54,7 @@
                                        VerticalOptions="Center"
                                        TextColor="DarkGoldenrod"
                                        FontSize="22"
-                                       Padding="0,15,0,15"
-                                />
+                                       Padding="0,15,0,15"/>
                                 <!-- right side of each row, used as button-->
                                 <Button Grid.Column="1"
                                        Text = "Delete"

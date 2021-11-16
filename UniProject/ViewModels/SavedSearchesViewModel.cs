@@ -33,9 +33,9 @@ namespace UniProject.ViewModels
         {
             SavedSearches = new ObservableCollection<SchoolModel>();
             //returns from database all schools which match the logged in user's id
-            DataTable schoolreturn = 
+            DataTable schoolReturn = 
                 DbConn.Query("SELECT * FROM school Where SchoolName in (Select SchoolName From school Where SchoolName in (Select SavedSchool From savedsearches where UserID = @1))", Utilities.UserID);
-            SavedSearches = new ObservableCollection<SchoolModel>(schoolreturn.Select().ToList().Select(r =>
+            SavedSearches = new ObservableCollection<SchoolModel>(schoolReturn.Select().ToList().Select(r =>
                 new SchoolModel(r["SchoolName"] as string,
                     r["SchoolAddress"] as string,
                     r["ApplicationURL"] as string,

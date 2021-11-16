@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UniProject.Utils;
 using Xamarin.Forms;
@@ -28,57 +29,97 @@ namespace UniProject.Views
         //If account successfully created, take them to login page.
         private async void CreateAccountButtonClicked(object sender, EventArgs e)
         {
-    
-            //Checks if the user left any fields empty
-            if (NewUsername.Text == null || NewEmail.Text == null || NewPassword.Text == null || NewPasswordConfirm.Text == null )
+            
+            String username = NewUsername.Text;
+            String email = NewEmail.Text;
+            String password = NewPassword.Text;
+            String cPassword = NewPasswordConfirm.Text;
+            
+            //Checks if the user left any fields empty.
+            if (username == null || email == null || password == null || cPassword == null )
             {
-                await DisplayAlert("Error", "Please fill out all fields.", "Ok");
+                PasswordConfirmErrorLabel.TextColor = Color.Red;
+                PasswordConfirmErrorLabel.Text = "Please fill out all fields";
+                await DisplayAlert("Test!", "Password: " + password, "Thanks!");
             }
-
-            //All fields were filled out
+            
+            //All fields are filled out.
             else
             {
-                
-                var usernameExists = DbConn2.QueryScalar("SELECT Username FROM user WHERE Username = @1", NewUsername.Text);
-                var emailExists = DbConn2.QueryScalar("SELECT Email FROM user WHERE Email = @1", NewEmail.Text);
+                var usernameExists = DbConn2.QueryScalar("SELECT Username FROM user WHERE Username = @1", username);
                 
                 //Username already used.
                 if (usernameExists != null) 
                 {
-                    bool answer = await DisplayAlert("Error!", "Username already exists. Do you already have an account?", "Yes", "No");
-                    if (answer == true)
-                    {
-                        await Navigation.PopModalAsync(); 
-                    }
+                    UserErrorLabel.TextColor = Color.Red;
+                    UserErrorLabel.Text = "Username already exists";
                 }
-                
-                //Email already used.
-                else if (emailExists != null)
-                {
-                    bool answer = await DisplayAlert("Error!", "Email already exists. Do you already have an account?", "Yes", "No");
-                    if (answer == true)
-                    {
-                        await Navigation.PopModalAsync(); 
-                    }
-                }
-                
-                //User's credentials don't exist in database.
+                //Username can be used (but there are additional field errors).
                 else
                 {
-                    //Passwords do not match.
-                    if (NewPassword.Text != NewPasswordConfirm.Text)
+                    UserErrorLabel.TextColor = Color.Green;
+                    UserErrorLabel.Text = "Username is Valid";
+                }
+                
+                //Email Input Validation Successful.
+                if (RegexUtil.ValidEmailAddress().IsMatch(email))
+                {
+                    var emailExists = DbConn2.QueryScalar("SELECT Email FROM user WHERE Email = @1", email);
+                 
+                    //Let the user know the email is valid.
+                    if (emailExists == null)
                     {
-                        await DisplayAlert("Error", "Passwords don't match. Please try again.", "Ok");
+                        EmailErrorLabel.TextColor = Color.Green;
+                        EmailErrorLabel.Text = "Email is Valid";
                     }
                     
-                    //Account created successfully!
-                    else 
+                    //Let the user know the email is in use.
+                    else
                     {
-                        DbConn2.Query("INSERT INTO user (Username, Password, Email) Values (@1, @2, @3)", NewUsername.Text, NewPassword.Text, NewEmail.Text);
-                        await DisplayAlert("Congratulations!", "Account Successfully Created!", "Ok");
-                        await Navigation.PopModalAsync(); 
+                        EmailErrorLabel.TextColor = Color.Red;
+                        EmailErrorLabel.Text = "Email is already taken";
                     }
                 }
+            
+                //Email Input Validation Unsuccessful.
+                else
+                {
+                    EmailErrorLabel.TextColor = Color.Red;
+                    EmailErrorLabel.Text = "Email is Invalid";
+                }
+                
+                //Password Input Validation Successful.
+                if (RegexUtil.ValidPassword().IsMatch(password)) 
+                {
+                    if (password != cPassword)
+                    {
+                        PasswordConfirmErrorLabel.TextColor = Color.Red;
+                        PasswordConfirmErrorLabel.Text = "Passwords don't match";
+                    }
+                    else
+                    {
+                        PasswordConfirmErrorLabel.TextColor = Color.Green;
+                        PasswordConfirmErrorLabel.Text = "Passwords Match";
+                    }
+
+
+                }
+                //Password Input Validation Unsuccessful.
+                else
+                {
+                    PasswordConfirmErrorLabel.TextColor = Color.Red;
+                    PasswordConfirmErrorLabel.Text = "Password must contain: \nMinimum eight characters \nAt least one uppercase letter \nOne lowercase letter \nOne number (0 - 9) \nOne special character (@$!%*?&)";
+                }
+
+                if (UserErrorLabel.TextColor == Color.Green && EmailErrorLabel.TextColor == Color.Green &&
+                    PasswordConfirmErrorLabel.TextColor == Color.Green)
+                {
+                    DbConn2.Query("INSERT INTO user (Username, Password, Email) Values (@1, @2, @3)", NewUsername.Text, NewPassword.Text, NewEmail.Text);
+                    await Navigation.PopModalAsync();
+                    await DisplayAlert("Congratulations!", "Account Successfully Created! We're glad we can be a part of your search for higher education!", "Thanks!");
+
+                }
+
             }
             
         }

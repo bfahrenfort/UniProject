@@ -2,89 +2,119 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:UniProject.ViewModels;assembly=UniProject"
              x:Class="UniProject.Views.RegistrationPage"
              BackgroundColor="#121212">
     
     <ContentPage.Content>
         
-        
-        <StackLayout Padding="20, 0, 20, 80" 
-                     VerticalOptions="Center" 
-                     HorizontalOptions="FillAndExpand">
+        <Grid>
             
-            <Image Source = "https://i.ibb.co/0QHkWg2/Uni-Tour-Logo.png"/>
+            <StackLayout
+                
+                Padding="40, 0, 40 , 10" 
+                VerticalOptions="Center" 
+                HorizontalOptions="FillAndExpand">
+                
+                <!--Application Logo-->
+                <Image Source="https://i.ibb.co/0QHkWg2/Uni-Tour-Logo.png"
+                       WidthRequest="300"
+                       HeightRequest="150"/>
+
+                <!--Username Entry-->
+                <Frame
+                    Padding="2"
+                    BorderColor="Black"> 
+                    <Entry x:Name="NewUsername"
+                           BackgroundColor="White"
+                           Placeholder="Username"
+                           TextColor="Black"
+                           PlaceholderColor="Gray"/>
+                </Frame>
+                
+                <!--Label for Username Input Validation-->
+                <Label x:Name="UserErrorLabel"
+                       FontSize="Small"/>
+                
+                <!--Email Entry-->
+                <Frame
+                    Padding="2"
+                    BorderColor="Black"> 
+                    <Entry x:Name="NewEmail"
+                           BackgroundColor="White"
+                           TextColor="Black"
+                           Placeholder="Email"
+                           PlaceholderColor="Gray"/>  
+                </Frame>
             
-            <Frame
-                Padding="2"
-                BorderColor="Black"
-                Margin="0,0, 0, 10"> 
-                <Entry x:Name="NewUsername"
-                       Placeholder="Username"
-                       BackgroundColor="White"
-                       TextColor="Black"
-                       PlaceholderColor="Gray"/>  
-            </Frame>
+                <!--Label for Username Input Validation-->
+                <Label x:Name="EmailErrorLabel"
+                       FontSize="Small"/> 
+                
+                <!--Password Entry-->
+                <Frame
+                    Padding="2"
+                    BorderColor="Black"> 
+                    <Entry x:Name="NewPassword"
+                           Placeholder="Password"
+                           IsPassword="True"
+                           BackgroundColor="White"
+                           TextColor="Black"
+                           PlaceholderColor="Gray"/> 
+                </Frame>
             
-            <Frame
-                Padding="2"
-                BorderColor="Black"
-                Margin="0,0, 0, 10"> 
-                <Entry x:Name="NewEmail"
-                       Placeholder="Email"
-                       BackgroundColor="White"
-                       TextColor="Black"
-                       PlaceholderColor="Gray"/>  
-            </Frame>
+                <!--It's being used more for spacing than for any functional purpose-->
+                
+                <!--Label for Password Input Validation-->
+                <Label x:Name="PasswordErrorLabel"
+                       FontSize="Small"/>
+                
+                <!--Password Confirmation Entry-->
+                <Frame
+                    Padding="2"
+                    BorderColor="Black"> 
+                    <Entry x:Name="NewPasswordConfirm"
+                           Placeholder="Reenter Password"
+                           IsPassword="True"
+                           BackgroundColor="White"
+                           TextColor="Black"
+                           PlaceholderColor="Gray"/> 
+                </Frame>
             
-            <Frame
-                Padding="2"
-                BorderColor="Black"
-                Margin="0,0, 0, 10"> 
-                <Entry x:Name="NewPassword"
-                       Placeholder="Password"
-                       IsPassword="True"
-                       BackgroundColor="White"
-                       TextColor="Black"
-                       PlaceholderColor="Gray"/> 
-            </Frame>
-            
-            <Frame
-                Padding="2"
-                BorderColor="Black"
-                Margin="0,0, 0, 10"> 
-                <Entry x:Name="NewPasswordConfirm"
-                       Placeholder="Reenter Password"
-                       IsPassword="True"
-                       BackgroundColor="White"
-                       TextColor="Black"
-                       PlaceholderColor="Gray"/> 
-            </Frame>
-            
-            <Button VerticalOptions="Center"
-                    Text="Create Account"
-                    TextColor="Black"
-                    BorderWidth="1.5"
-                    CornerRadius="50"
-                    Clicked="CreateAccountButtonClicked"/>
+                
+                <!--Label for Password Confirmation Input Validation-->
+                <Label x:Name="PasswordConfirmErrorLabel"
+                       FontSize="Small"/>
+                
+                <!--Create Account Button-->
+                <Button VerticalOptions="Center"
+                        Text="Create Account"
+                        TextColor="Black"
+                        BorderWidth="1.5"
+                        CornerRadius="50"
+                        Clicked="CreateAccountButtonClicked"/>
   
-            <Label HorizontalOptions="Center">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Already have an account? "
-                              TextColor="Gray"/>
+                <!--Button in case users already have an account-->
+                <Label HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Already have an account? "
+                                  TextColor="Gray"/>
                         
-                        <Span Text="Login Here" 
-                              TextColor="Gray"
-                              FontAttributes="Bold"
-                              TextDecorations="Underline"/>
-                    </FormattedString>
-                </Label.FormattedText>
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ExistingAccountButtonTapped"/>
-                </Label.GestureRecognizers>
-            </Label>
-            
-        </StackLayout>
+                            <Span Text="Login Here" 
+                                  TextColor="Gray"
+                                  FontAttributes="Bold"
+                                  TextDecorations="Underline"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ExistingAccountButtonTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                
+            </StackLayout>
+
+        </Grid>
         
     </ContentPage.Content>
     

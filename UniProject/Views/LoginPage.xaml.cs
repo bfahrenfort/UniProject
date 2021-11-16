@@ -31,9 +31,6 @@ namespace UniProject.Views
             //Query for the input user credentials used to login the user.
             var credentialsExists = DbConn2.QueryScalar("SELECT UserID FROM user WHERE Username = @1  AND Password = @2", TextUsername.Text, TextPassword.Text);
             
-            //var credentialsExists = DbConn2.QueryScalar("SELECT Username FROM user WHERE Username = @1", TextUsername.Text);
-
-            
             //Checks if there is any result for the entered Username and Password.
             if (credentialsExists == null)
             {
