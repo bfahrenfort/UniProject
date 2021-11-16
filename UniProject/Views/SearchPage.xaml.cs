@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace UniProject.Views
             InitializeComponent();
             Navigation.PushModalAsync(new LoginPage());
         }
-
+        
         async void SchoolClicked(object sender, EventArgs e)
         {
             //Whenever an item is selected, that item is assigned to the SchoolViewModel's Selected property
@@ -40,16 +41,17 @@ namespace UniProject.Views
             //If the school isn't favorited, favorites the school.
             if (saveExists == null)
             {
-                await DisplayAlert("Saved!", "The university has been saved to your Saved Searches", "Ok");
+                await DisplayAlert("Saved!", "The University Has Been Saved To Your Saved Searches", "Ok");
                 DbConn.Query("INSERT INTO savedsearches (UserId, SavedSchool) Values (@1, @2)", Utilities.UserID, schoolName);
             }
             //If the school is already favorited, un-favorites the school.
             else
             {
-                await DisplayAlert("Deleted", "The university has been removed from your Saved Searches", "Ok");
+                await DisplayAlert("Deleted", "The University Has Been Removed From Your Saved Searches", "Ok");
                 DbConn.Query("DELETE FROM savedsearches WHERE UserId = @1 AND SavedSchool = @2", Utilities.UserID, schoolName);
             }
         }
+ 
         private async void NavigateToSavedSearchButton(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SavedSearchesPage());

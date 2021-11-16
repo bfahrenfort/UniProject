@@ -77,36 +77,35 @@
                         <!--Footer of page-->
                         <StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <!--Favorite Button-->
-                                <ImageButton
-                                    HeightRequest="30"
-                                    WidthRequest="30"
-                                    HorizontalOptions="StartAndExpand"
-                                    VerticalOptions="CenterAndExpand"
-                                    Source="https://i.ibb.co/FhBZNjr/Favorite-Unselected-Icon-Dark-Mode.png"
-                                    Clicked="SaveClicked"
-                                    BackgroundColor="Transparent"
-                                    Margin="15, 15"/>
-                                
-                                <Label
-                                    Text="{Binding SchoolName}"
-                                    HorizontalOptions="StartAndExpand"
-                                    VerticalOptions="CenterAndExpand"
-                                    FontAttributes="Bold"
-                                    TextColor="DarkGoldenrod"
-                                    FontSize="Medium"/>
+                                <Grid>
+                                    <!--defines sizes of each column within a row-->
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="70"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <!--Favorite Button-->
+                                    <ImageButton Grid.Column="0"
+                                                 HorizontalOptions="Start"
+                                                 VerticalOptions="Center"
+                                                 Source="https://i.ibb.co/vsMCzNc/Save.png"
+                                                 Clicked="SaveClicked"
+                                                 BackgroundColor="Transparent"/>
+                                    <Label Grid.Column="1"
+                                           Text="{Binding SchoolName}"
+                                           HorizontalOptions="StartAndExpand"
+                                           VerticalOptions="Center"
+                                           FontAttributes="Bold"
+                                           TextColor="DarkGoldenrod"
+                                           FontSize="Medium"
+                                           MaxLines="1"
+                                           Padding="15,0,0,0"
+/>
+                                </Grid>
                             </StackLayout>
-                            
                         </StackLayout>
-                        
                     </ViewCell>
-                    
                 </DataTemplate>
-                
             </ListView.ItemTemplate>
-            
         </ListView>
-        
     </StackLayout>
-    
 </ContentPage>

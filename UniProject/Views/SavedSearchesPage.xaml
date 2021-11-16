@@ -54,18 +54,15 @@
                                        VerticalOptions="Center"
                                        TextColor="DarkGoldenrod"
                                        FontSize="22"
-                                       Padding="0,15,0,15"
+                                       Padding="0,15,30,15"
                                 />
                                 <!-- right side of each row, used as button-->
-                                <Button Grid.Column="1"
-                                       Text = "Delete"
+                                <ImageButton Grid.Column="1"
+                                       Source="https://i.ibb.co/r3R3jN1/Untitled-design-5.png"
                                        Clicked="SchoolDeleteButton"
                                        HorizontalOptions="End"
                                        VerticalOptions="Center"
-                                       TextColor="Black"
-                                       BackgroundColor="Red"
-                                       FontSize="20"
-                                       Padding="0,15,0,15"
+                                       BackgroundColor="#121212"
                                 />
                             </Grid>
                             <!-- line dividing rows-->
