@@ -16,7 +16,7 @@
     <StackLayout>
         <!--header of page-->
         <Label Text="Saved Searches"
-               TextColor="DarkGray"
+               TextColor="#BB86FC"
                FontSize= "35"
                HorizontalOptions="Center"
                VerticalOptions="Start"
@@ -33,7 +33,7 @@
         <ListView x:Name="SchoolsList"
                   ItemsSource="{Binding SavedSearches}"
                   SelectionMode="Single"
-                  ItemSelected="SchoolClicked"
+                  ItemTapped="SchoolClicked"
                   SelectedItem="{Binding Selected}"
                   RowHeight="70">
             <ListView.ItemTemplate>
@@ -41,30 +41,17 @@
                     <ViewCell>
                         <!-- footer of page-->
                         <StackLayout>
-                            <Grid>
-                                <!--defines sizes of each column within a row-->
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <!--left side of each row, used to display university name-->
-                                <Label Grid.Column="0"
-                                       Text ="{Binding SchoolName}"
-                                       HorizontalOptions="StartAndExpand"
+                            <!--defines sizes of each column within a row-->
+                            <!--left side of each row, used to display university name-->
+                                <Label Text ="{Binding SchoolName}"
+                                       HorizontalOptions="CenterAndExpand"
                                        VerticalOptions="Center"
-                                       TextColor="DarkGoldenrod"
-                                       FontSize="22"
+                                       TextColor="GhostWhite"
+                                       FontAttributes="Bold"
+                                       FontSize="Medium"
                                        Padding="0,15,30,15"
                                 />
                                 <!-- right side of each row, used as button-->
-                                <ImageButton Grid.Column="1"
-                                       Source="https://i.ibb.co/r3R3jN1/Untitled-design-5.png"
-                                       Clicked="SchoolDeleteButton"
-                                       HorizontalOptions="End"
-                                       VerticalOptions="Center"
-                                       BackgroundColor="#121212"
-                                />
-                            </Grid>
                             <!-- line dividing rows-->
                             <Line X1="-1000"
                                   X2="1000"

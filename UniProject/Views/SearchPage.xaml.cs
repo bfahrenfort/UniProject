@@ -33,7 +33,7 @@ namespace UniProject.Views
 
         async void SaveClicked(object sender, EventArgs e) //saves selected school
         {
-            SchoolModel s = ((SchoolModel) ((ImageButton) sender).BindingContext);
+            SchoolModel s = ((SchoolModel) ((CheckBox) sender).BindingContext);
             var schoolName = s.SchoolName;
             //Checks if the school is already saved.
             var saveExists = DbConn.QueryScalar("SELECT * FROM savedsearches WHERE UserId = @1 And SavedSchool = @2", Utilities.UserID, schoolName);

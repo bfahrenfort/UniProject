@@ -23,7 +23,7 @@ namespace UniProject.Views
             InitializeComponent();
         }
 
-        async void SchoolClicked(object sender, SelectedItemChangedEventArgs e)
+        async void SchoolClicked(object sender, EventArgs e)
         {
             SchoolModel s = (((ListView) sender).BindingContext as SavedSearchesViewModel).Selected;
             await Navigation.PushAsync(new BuildingPage(s), true);

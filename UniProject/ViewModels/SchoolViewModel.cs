@@ -45,6 +45,7 @@ namespace UniProject.ViewModels
                            r["ApplicationURL"] as string, 
                            r["SchoolAcronym"] as string)));
         });
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
 
