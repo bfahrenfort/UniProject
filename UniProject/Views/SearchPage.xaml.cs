@@ -42,12 +42,12 @@ namespace UniProject.Views
             //If the school isn't favorited, favorites the school
             if (saveSuccess.Equals("True"))
             {
-                await DisplayAlert("Saved!", "The University Has Been Saved To Your Saved Searches", "Ok");
+                //await DisplayAlert("Saved!", "The University Has Been Saved To Your Saved Searches", "Ok");
             }
             //If the school is already favorited, un-favorites the school
             else
             {
-                await DisplayAlert("Deleted", "The University Has Been Removed From Your Saved Searches", "Ok");
+                //await DisplayAlert("Deleted", "The University Has Been Removed From Your Saved Searches", "Ok");
             }
         }
  
