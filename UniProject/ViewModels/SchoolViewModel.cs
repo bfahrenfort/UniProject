@@ -1,5 +1,6 @@
 ﻿// This ViewModel provides a View with access to lists of the School model which it can use in ListViews etc.
 
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
@@ -17,8 +18,7 @@ namespace UniProject.ViewModels
     {
         public SchoolModel Selected { get; set; }
         private const string TextSearchQuery = "select * from School where SchoolName like @1";
-
-        //FIXME we don't really need an explicit backing field since we need to onpropertychanged it
+        
         private ObservableCollection<SchoolModel> _schools;
         public ObservableCollection<SchoolModel> Schools
         { 
@@ -43,7 +43,13 @@ namespace UniProject.ViewModels
                 new SchoolModel(r["SchoolName"] as string, 
                            r["SchoolAddress"] as string, 
                            r["ApplicationURL"] as string, 
-                           r["SchoolAcronym"] as string)));
+                           r["SchoolAcronym"] as string,
+                           r["SemesterCost"] as Nullable<int> ?? -1,
+                           r["StudentsPerFaculty"] as Nullable<int> ?? -1,
+                           r["AverageGPA"] as Nullable<double> ?? -1,
+                           r["AverageSAT"] as Nullable<int> ?? -1)));
+            // Just to make the last one clear, it converts to integer (except if result is NULL in table then the value is null),
+            // then if null pass -1 instead of the int value
         });
         
 

@@ -7,7 +7,7 @@
              BackgroundColor="#121212">
     
     <ContentPage>
-        <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand">
+        <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
             <Label Text="Swipe right for second school"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" 
@@ -16,7 +16,7 @@
         </StackLayout>
     </ContentPage>
     <ContentPage>
-        <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand">
+        <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
             <Label Text="Swipe left for first school"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"

@@ -1,4 +1,5 @@
 using System;
+using System.Security.Cryptography;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -114,7 +115,8 @@ namespace UniProject.Views
                 if (UserErrorLabel.TextColor == Color.Green && EmailErrorLabel.TextColor == Color.Green &&
                     PasswordConfirmErrorLabel.TextColor == Color.Green)
                 {
-                    DbConn2.Query("INSERT INTO user (Username, Password, Email) Values (@1, @2, @3)", NewUsername.Text, NewPassword.Text, NewEmail.Text);
+                    string hash = Utilities.Hash(NewPassword.Text);
+                    DbConn2.Query("INSERT INTO user (Username, Password, Email) Values (@1, @2, @3)", NewUsername.Text, hash, NewEmail.Text);
                     await Navigation.PopModalAsync();
                     await DisplayAlert("Congratulations!", "Account Successfully Created! We're glad we can be a part of your search for higher education!", "Thanks!");
 

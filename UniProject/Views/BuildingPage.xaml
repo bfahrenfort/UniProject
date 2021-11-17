@@ -15,12 +15,12 @@
         <Button Text="compare..."
                HorizontalOptions="Center"
                VerticalOptions="Center"
-               TextColor="Blue"
+               TextColor="White"
                Font="Default"
                FontAttributes="Italic"
                FontSize="Medium"
                Clicked="CompareClicked"
-               Padding="0,0,0,20"
+               Padding="20,0,0,20"
                BackgroundColor="Transparent">
         </Button>
         <!-- line seperating header and footer-->
