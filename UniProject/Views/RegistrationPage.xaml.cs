@@ -125,8 +125,8 @@ namespace UniProject.Views
 
                     _ = APIConn.Request("/auth/register?key=" + key);
 
-                    await Navigation.PopModalAsync();
                     await DisplayAlert("Congratulations!", "Account Successfully Created! \nWe're glad you chose us in your search for higher education!", "Thanks!");
+                    await Navigation.PopModalAsync();
 
                 }
 

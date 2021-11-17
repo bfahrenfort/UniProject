@@ -48,9 +48,8 @@ namespace UniProject.Views
             else
             {
                 //Displays a message saying an email was sent and returns them to the Login screen.
-                //Will be finished after API implementation.
                 DisplayAlert("Password Recovery", "An email has been sent with instructions to recover your password.", "Ok");
-                Navigation.PopModalAsync(); //Takes you back to the Login Page.
+                Navigation.PopModalAsync();
             }
         }
         

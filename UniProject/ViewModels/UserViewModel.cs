@@ -15,10 +15,6 @@ namespace UniProject.ViewModels
 {
     public class UserViewModel: INotifyPropertyChanged
     {
-        private UserModel user;
-
-        
-
         public UserViewModel(UserModel u)
         {
             //Not needed yet;i
