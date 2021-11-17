@@ -7,20 +7,20 @@
              BackgroundColor="#121212">
     
     <ContentPage>
-        <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
+        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
             <Label Text="Swipe right for second school"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" 
-                   TextColor="LightGoldenrodYellow"/>
+                   TextColor="#03DAC6"/>
             <partials:SchoolInfo BindingContext="{Binding S1}"/>
         </StackLayout>
     </ContentPage>
     <ContentPage>
-        <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
+        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
             <Label Text="Swipe left for first school"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"
-                   TextColor="LightGoldenrodYellow"/>
+                   TextColor="#03DAC6"/>
             <partials:SchoolInfo BindingContext="{Binding S2}"/>
         </StackLayout>
     </ContentPage>

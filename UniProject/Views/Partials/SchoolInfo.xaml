@@ -49,19 +49,19 @@
     <!--Additional school info-->
     <Label Text="{Binding CostLabel}"
            HorizontalOptions="Center"
-           TextColor="LightGoldenrodYellow"
+           TextColor="WhiteSmoke"
            FontAttributes="Bold"
            FontSize="Medium"/>
     
     <Label Text="{Binding ClassLabel}"
            HorizontalOptions="Center"
-           TextColor="LightGoldenrodYellow"
+           TextColor="WhiteSmoke"
            FontAttributes="Bold"
            FontSize="Medium"/>
     
     <Label Text="{Binding StatsLabel}"
            HorizontalOptions="Center"
-           TextColor="LightGoldenrodYellow"
+           TextColor="WhiteSmoke"
            FontAttributes="Bold"
            FontSize="Medium"/>
 </StackLayout>
