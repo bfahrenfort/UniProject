@@ -30,10 +30,13 @@ namespace UniProject.Views
         {
             string hash = Utilities.Hash(TextPassword.Text);
             //Query for the input user credentials used to login the user.
-            var credentialsExists = DbConn2.QueryScalar("SELECT UserID FROM user WHERE Username = @1  AND Password = @2", TextUsername.Text, hash);
-            
+            var encode = Encoding.UTF8.GetBytes(TextUsername.Text + ":" + hash);
+            string key = Convert.ToBase64String(encode);
+
+            int userID = int.Parse(APIConn.Request("Auth/login?key=" + key));
+
             //Checks if there is any result for the entered Username and Password.
-            if (credentialsExists == null)
+            if (userID == -1)
             {
                 //Displays an error if login information is incorrect/doesn't exist.
                 DisplayAlert("Error!",   "Username or Password is incorrect or doesn't exist.", "Ok");
@@ -43,7 +46,7 @@ namespace UniProject.Views
             else
             {
                 
-                Utilities.UserID = (int) credentialsExists;
+                Utilities.UserID = (int) userID;
                 Navigation.PopModalAsync();
             }
         }

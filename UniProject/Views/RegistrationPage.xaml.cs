@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using UniProject.Utils;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Newtonsoft.Json;
+using UniProject.Models;
 
 namespace UniProject.Views
 {
@@ -47,10 +49,13 @@ namespace UniProject.Views
             //All fields are filled out.
             else
             {
-                var usernameExists = DbConn2.QueryScalar("SELECT Username FROM user WHERE Username = @1", username);
-                
+                var encode = Encoding.UTF8.GetBytes(username + ":" + email);
+                string key = Convert.ToBase64String(encode);
+
+                RegisterModel register = (RegisterModel)JsonConvert.DeserializeObject(APIConn.Request("auth/exist?key=" + key), typeof(RegisterModel));
+
                 //Username already used.
-                if (usernameExists != null) 
+                if (register.UserName) 
                 {
                     UserErrorLabel.TextColor = Color.Red;
                     UserErrorLabel.Text = "Username already exists";
@@ -65,10 +70,10 @@ namespace UniProject.Views
                 //Email Input Validation Successful.
                 if (RegexUtil.ValidEmailAddress().IsMatch(email))
                 {
-                    var emailExists = DbConn2.QueryScalar("SELECT Email FROM user WHERE Email = @1", email);
+                    
                  
                     //Let the user know the email is valid.
-                    if (emailExists == null)
+                    if (!register.Email)
                     {
                         EmailErrorLabel.TextColor = Color.Green;
                         EmailErrorLabel.Text = "Email is Valid";
@@ -116,7 +121,11 @@ namespace UniProject.Views
                     PasswordConfirmErrorLabel.TextColor == Color.Green)
                 {
                     string hash = Utilities.Hash(NewPassword.Text);
-                    DbConn2.Query("INSERT INTO user (Username, Password, Email) Values (@1, @2, @3)", NewUsername.Text, hash, NewEmail.Text);
+                    encode = Encoding.UTF8.GetBytes(NewUsername.Text + ":" + hash + ":" + NewEmail.Text);
+                    key = Convert.ToBase64String(encode);
+
+                    _ = APIConn.Request("/auth/register?key=" + key);
+
                     await Navigation.PopModalAsync();
                     await DisplayAlert("Congratulations!", "Account Successfully Created! We're glad we can be a part of your search for higher education!", "Thanks!");
 

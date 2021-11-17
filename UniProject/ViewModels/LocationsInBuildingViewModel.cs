@@ -10,6 +10,8 @@ using UniProject.Utils;
 using Xamarin.Forms;
 using UniProject.Annotations;
 using Xamarin.Essentials;
+using Newtonsoft.Json;
+using System;
 
 //View model displaying list of different features within each building
 namespace UniProject.ViewModels
@@ -60,13 +62,12 @@ namespace UniProject.ViewModels
             
             _building = b;
             //query to return all locations from selected building
-            DataTable locationreturn = DbConn.Query("select * from location where BuildingName = @1", b.BuildingName);
-            LocationsInBuildings = new ObservableCollection<LocationsInBuildingsModel>(locationreturn.Select().ToList().Select(r =>
-                new LocationsInBuildingsModel(r["LocationCol"] as string,
-                    r["LocationName"] as string,
-                    r["BuildingName"] as string,
-                    r["LocationAddress"] as string,
-                    r["SchoolName"] as string)));
+            //query to return all locations from selected building
+            try
+            {
+                LocationsInBuildings = (ObservableCollection<LocationsInBuildingsModel>)JsonConvert.DeserializeObject(APIConn.Request("api/locations?name=" + b.BuildingName), typeof(ObservableCollection<LocationsInBuildingsModel>));
+            }
+            catch (Exception) { throw; }
 
         }
         public event PropertyChangedEventHandler PropertyChanged;
