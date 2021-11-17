@@ -33,16 +33,13 @@ namespace UniProject.Views
         async void SchoolDeleteButton(object sender, EventArgs e)
         {
             SchoolModel s = ((SchoolModel) ((ImageButton) sender).BindingContext);
-            String schoolname = s.SchoolName;
-            //Remove the line below this at a later date.
+            string schoolName = s.SchoolName;
+            //returns correct data, if statement below doesnt wait
+            string saveExists =  APIConn.Request("api/removeSearch?userID=" + Utilities.UserID + "&schoolName=" + schoolName);
 
-            var schoolexists = DbConn.QueryScalar("Select * from savedsearches Where UserId = @1 AND SavedSchool = @2",
-                Utilities.UserID, schoolname);
-            if (schoolexists != null)
+            if (saveExists.Equals("True"))
             {
-                await DisplayAlert("Success!", "The University Was Removed From Your Saved Searches.", "Close");
-                DbConn.Query("DELETE FROM savedsearches WHERE UserId = @1 AND SavedSchool = @2", Utilities.UserID,
-                    schoolname);
+                await DisplayAlert("Success!", "The University Was Removed From Your Saved Searches.", "Close");              
             }
             else
             {

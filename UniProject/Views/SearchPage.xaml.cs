@@ -33,22 +33,21 @@ namespace UniProject.Views
 
         async void SaveClicked(object sender, EventArgs e) //saves selected school
         {
-            SchoolModel s = ((SchoolModel) ((CheckBox) sender).BindingContext);
+            SchoolModel s = ((SchoolModel)((CheckBox)sender).BindingContext);
             var schoolName = s.SchoolName;
-            //Checks if the school is already saved.
-            var saveExists = DbConn.QueryScalar("SELECT * FROM savedsearches WHERE UserId = @1 And SavedSchool = @2", Utilities.UserID, schoolName);
 
-            //If the school isn't favorited, favorites the school.
-            if (saveExists == null)
+            //Save the school, if saved delete save
+            string saveSuccess = APIConn.Request("api/saveSearch?userID=" + Utilities.UserID + "&schoolName=" + schoolName);
+            Console.WriteLine(saveSuccess);
+            //If the school isn't favorited, favorites the school
+            if (saveSuccess.Equals("True"))
             {
                 await DisplayAlert("Saved!", "The University Has Been Saved To Your Saved Searches", "Ok");
-                DbConn.Query("INSERT INTO savedsearches (UserId, SavedSchool) Values (@1, @2)", Utilities.UserID, schoolName);
             }
-            //If the school is already favorited, un-favorites the school.
+            //If the school is already favorited, un-favorites the school
             else
             {
                 await DisplayAlert("Deleted", "The University Has Been Removed From Your Saved Searches", "Ok");
-                DbConn.Query("DELETE FROM savedsearches WHERE UserId = @1 AND SavedSchool = @2", Utilities.UserID, schoolName);
             }
         }
  

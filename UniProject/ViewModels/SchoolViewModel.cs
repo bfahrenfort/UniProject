@@ -11,6 +11,7 @@ using UniProject.Models;
 using UniProject.Utils;
 using Xamarin.Forms;
 using UniProject.Annotations;
+using Newtonsoft.Json;
 
 namespace UniProject.ViewModels
 {
@@ -38,16 +39,12 @@ namespace UniProject.ViewModels
         public ICommand Search => new Command<string>((query) =>
         {
             //query to return schools based on a string in the search 
-            DataTable schoolReturn = DbConn.Query(TextSearchQuery, '%' + query + '%');
-            Schools = new ObservableCollection<SchoolModel>(schoolReturn.Select().ToList().Select(r =>
-                new SchoolModel(r["SchoolName"] as string, 
-                           r["SchoolAddress"] as string, 
-                           r["ApplicationURL"] as string, 
-                           r["SchoolAcronym"] as string,
-                           r["SemesterCost"] as Nullable<int> ?? -1,
-                           r["StudentsPerFaculty"] as Nullable<int> ?? -1,
-                           r["AverageGPA"] as Nullable<double> ?? -1,
-                           r["AverageSAT"] as Nullable<int> ?? -1)));
+            //query API to return schools based on a string in the search
+            try
+            {
+                Schools = (ObservableCollection<SchoolModel>)JsonConvert.DeserializeObject(APIConn.Request("api/School?name=" + query), typeof(ObservableCollection<SchoolModel>));
+            }
+            catch (Exception) { throw; }
             // Just to make the last one clear, it converts to integer (except if result is NULL in table then the value is null),
             // then if null pass -1 instead of the int value
         });

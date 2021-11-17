@@ -3,6 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UniProject.App">
     <Application.Resources>
-
+<!--This imports the relevant resources into the app's appearance -->
     </Application.Resources>
 </Application>

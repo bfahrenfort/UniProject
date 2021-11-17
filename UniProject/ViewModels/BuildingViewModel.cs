@@ -9,6 +9,8 @@ using UniProject.Utils;
 using Xamarin.Forms;
 using UniProject.Annotations;
 using Xamarin.Essentials;
+using Newtonsoft.Json;
+using System;
 
 //View Model Displaying list of different buildings on campus
 
@@ -35,13 +37,12 @@ namespace UniProject.ViewModels
         {
             InfoVm = new InfoViewModel(s);
             //returns from database buildings from selected school
-            DataTable buildingreturn = DbConn.Query("select * from building where SchoolName = @1", InfoVm.School.SchoolName); 
-            Buildings = new ObservableCollection<BuildingModel>(buildingreturn.Select().ToList().Select(r =>
-                new BuildingModel(r["BuildingName"] as string,
-                    r["BuildingAddress"] as string,
-                    r["PictureUrl"] as string,
-                    r["SchoolName"] as string)));
-
+            //query API to return schools based on a string in the search
+            try
+            {
+                Buildings = (ObservableCollection<BuildingModel>)JsonConvert.DeserializeObject(APIConn.Request("api/Buildings?name=" + InfoVm.School.SchoolName), typeof(ObservableCollection<BuildingModel>));
+            }
+            catch (Exception) { throw; }
         }
 
         public SchoolModel SchoolFromVm => InfoVm.School;

@@ -8,6 +8,8 @@ using UniProject.Models;
 using UniProject.Utils;
 using Xamarin.Forms;
 using UniProject.Annotations;
+using Newtonsoft.Json;
+using System;
 
 //View Model Displaying list of different buildings on campus
 
@@ -33,13 +35,11 @@ namespace UniProject.ViewModels
         {
             SavedSearches = new ObservableCollection<SchoolModel>();
             //returns from database all schools which match the logged in user's id
-            DataTable schoolReturn = 
-                DbConn.Query("SELECT * FROM school Where SchoolName in (Select SchoolName From school Where SchoolName in (Select SavedSchool From savedsearches where UserID = @1))", Utilities.UserID);
-            SavedSearches = new ObservableCollection<SchoolModel>(schoolReturn.Select().ToList().Select(r =>
-                new SchoolModel(r["SchoolName"] as string,
-                    r["SchoolAddress"] as string,
-                    r["ApplicationURL"] as string,
-                    r["SchoolAcronym"] as string)));
+            try
+            {
+                SavedSearches = (ObservableCollection<SchoolModel>)JsonConvert.DeserializeObject(APIConn.Request("api/getSavedSearch?userID=" + Utilities.UserID), typeof(ObservableCollection<SchoolModel>));
+            }
+            catch (Exception) { throw; }
 
         }
         

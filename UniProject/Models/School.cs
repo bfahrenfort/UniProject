@@ -16,6 +16,8 @@ namespace UniProject.Models
         public double AverageGPA { get; set; }
         public int AverageSAT { get; set; }
 
+        public SchoolModel() { }
+
         // Brandon: Credit to Josh for fixing our binding issue due to auto-property tomfoolery and my incomplete knowledge of C#
         public SchoolModel(string n, string a, string u, string c)
         {
