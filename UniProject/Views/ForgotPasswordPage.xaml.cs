@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using UniProject.Utils;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,18 +26,30 @@ namespace UniProject.Views
         //Button Action: Sends an email to the input email (if it exists) with a way to recover/reset their password.
         private void SendEmailButtonClicked(object sender, EventArgs e)
         {
-            //Temporary until we can pass information to and from database
-            //to validate if the user's credentials exist/is correct
-            if (TextEmail.Text != "Gmail@gmail.com")
+            String email = TextEmail.Text;
+
+            var emailExists = DbConn2.QueryScalar("SELECT Email FROM user WHERE Email = @1", email);
+
+            //Checks if the user left any fields empty.
+            if (string.IsNullOrEmpty(email))
+            {
+                EmailErrorLabel.TextColor = Color.Red;
+                EmailErrorLabel.Text = "Please don't leave the field blank";
+            }
+            //Email Doesn't Exist
+            else if (emailExists == null)
             {
                 //Displays an error if the input email is doesn't exist in our database.
-                DisplayAlert("Error", "The input email isn't linked to any account", "Ok");
+                //DisplayAlert("Error", "The input email isn't linked to any account", "Ok");
+                EmailErrorLabel.TextColor = Color.Red;
+                EmailErrorLabel.Text = "The input email isn't linked to any account";
             }
+            //Email does exist, send email recovery email.
             else
             {
                 //Displays a message saying an email was sent and returns them to the Login screen.
-                DisplayAlert("Password Recovery", "An email has been sent to the input email" +
-                                                " with instructions to recover your password.", "Ok");
+                //Will be finished after API implementation.
+                DisplayAlert("Password Recovery", "An email has been sent with instructions to recover your password.", "Ok");
                 Navigation.PopModalAsync(); //Takes you back to the Login Page.
             }
         }

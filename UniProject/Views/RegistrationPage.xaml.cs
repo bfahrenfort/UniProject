@@ -37,11 +37,10 @@ namespace UniProject.Views
             String cPassword = NewPasswordConfirm.Text;
             
             //Checks if the user left any fields empty.
-            if (username == null || email == null || password == null || cPassword == null )
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(cPassword))
             {
                 PasswordConfirmErrorLabel.TextColor = Color.Red;
                 PasswordConfirmErrorLabel.Text = "Please fill out all fields";
-                await DisplayAlert("Test!", "Password: " + password, "Thanks!");
             }
             
             //All fields are filled out.
@@ -118,7 +117,7 @@ namespace UniProject.Views
                     string hash = Utilities.Hash(NewPassword.Text);
                     DbConn2.Query("INSERT INTO user (Username, Password, Email) Values (@1, @2, @3)", NewUsername.Text, hash, NewEmail.Text);
                     await Navigation.PopModalAsync();
-                    await DisplayAlert("Congratulations!", "Account Successfully Created! We're glad we can be a part of your search for higher education!", "Thanks!");
+                    await DisplayAlert("Congratulations!", "Account Successfully Created! \nWe're glad you chose us in your search for higher education!", "Thanks!");
 
                 }
 

@@ -18,7 +18,7 @@
                 <!-- Application Logo-->
                 <Image Source = "https://i.ibb.co/0QHkWg2/Uni-Tour-Logo.png"/>
 
-                <!--Username Textbox-->
+                <!--Username Entry-->
                 <Frame BackgroundColor="Transparent" BorderColor="White" Padding="0" Margin="0" CornerRadius="50" HorizontalOptions="FillAndExpand">
                     <StackLayout Orientation="Horizontal">
                         <Frame BackgroundColor="#BB86FC" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7, 7 ,0 ,7" HorizontalOptions="Start">
@@ -29,7 +29,7 @@
                     </StackLayout>
                 </Frame>
                 
-                <!--Password Textbox-->
+                <!--Password Entry-->
                 <Frame BackgroundColor="Transparent" BorderColor="White" Padding="0" Margin="0" CornerRadius="50" HorizontalOptions="FillAndExpand">
                     <StackLayout Orientation="Horizontal">
                         <Frame BackgroundColor="#BB86FC" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" Margin="7, 7 ,0 ,7" HorizontalOptions="Start">
@@ -53,7 +53,7 @@
                     
                 <!-- Login Button -->
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="Login" TextColor="White" CornerRadius="50" BackgroundColor="#20C073" FontAttributes="Bold" FontSize="Medium" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="LoginButtonClicked"/>  
+                    <Button Text="Login" TextColor="White" CornerRadius="50" BackgroundColor="#20C073" FontAttributes="Bold" FontSize="Medium" HeightRequest="45" HorizontalOptions="FillAndExpand" Clicked="LoginButtonClicked"/>  
                 </StackLayout>
                     
                 <!-- Sign Up Button -->
