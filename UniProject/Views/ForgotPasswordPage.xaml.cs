@@ -24,7 +24,7 @@ namespace UniProject.Views
         }
         
         //Button Action: Sends an email to the input email (if it exists) with a way to recover/reset their password.
-        private void SendEmailButtonClicked(object sender, EventArgs e)
+        private void ResetPasswordButtonClicked(object sender, EventArgs e)
         {
             String email = TextEmail.Text;
 
