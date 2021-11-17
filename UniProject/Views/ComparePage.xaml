@@ -5,7 +5,9 @@
              xmlns:partials="clr-namespace:UniProject.Views.Partials;assembly=UniProject"
              x:Class="UniProject.Views.ComparePage"
              BackgroundColor="#121212">
-    
+    <!--This imports the schema for xaml, makes it so that the namespace being looked 
+    through is the one that has the public information needed, and declares the class. 
+     -->
     <ContentPage>
         <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
             <Label Text="Swipe right for second school"
@@ -15,6 +17,11 @@
             <partials:SchoolInfo BindingContext="{Binding S1}"/>
         </StackLayout>
     </ContentPage>
+    <!-- 
+    The sections directly above and below this are the actual commands loading in and displaying 
+    the selected schools. The bindings are the way the are accessed. The options are declared 
+    here as well, to make it more clear to the user what to do.
+     --> 
     <ContentPage>
         <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
             <Label Text="Swipe left for first school"

@@ -8,7 +8,7 @@
     <!-- This context tells the layout that it will be working with a SchoolViewModel.
         It can be moved into higher or lower scopes as desired, 
         for instance if you wish to have a ListView bound to a BuildingViewModel but also require another binding
-        context somewhere else-->
+        context somewhere else -->
     <StackLayout Spacing="0" VerticalOptions="StartAndExpand">
         <partials:SchoolInfo BindingContext="{Binding InfoVm}"/>
         
@@ -17,7 +17,7 @@
                VerticalOptions="Center"
                TextColor="White"
                Font="Default"
-               FontAttributes="Italic"
+               FontAttributes="Italic, Bold"
                FontSize="Medium"
                Clicked="CompareClicked"
                Padding="20,0,0,20"
