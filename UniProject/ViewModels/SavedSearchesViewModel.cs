@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
@@ -36,10 +37,14 @@ namespace UniProject.ViewModels
             DataTable schoolReturn = 
                 DbConn.Query("SELECT * FROM school Where SchoolName in (Select SchoolName From school Where SchoolName in (Select SavedSchool From savedsearches where UserID = @1))", Utilities.UserID);
             SavedSearches = new ObservableCollection<SchoolModel>(schoolReturn.Select().ToList().Select(r =>
-                new SchoolModel(r["SchoolName"] as string,
-                    r["SchoolAddress"] as string,
-                    r["ApplicationURL"] as string,
-                    r["SchoolAcronym"] as string)));
+                new SchoolModel(r["SchoolName"] as string, 
+                    r["SchoolAddress"] as string, 
+                    r["ApplicationURL"] as string, 
+                    r["SchoolAcronym"] as string,
+                    r["SemesterCost"] as Nullable<int> ?? -1,
+                    r["StudentsPerFaculty"] as Nullable<int> ?? -1,
+                    r["AverageGPA"] as Nullable<double> ?? -1,
+                    r["AverageSAT"] as Nullable<int> ?? -1)));
 
         }
         
